@@ -1,0 +1,772 @@
+"use client"
+
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import Gallery from "@/components/gallery"
+
+export default function HomePage() {
+  const galleryImages = [
+    { src: "/images/tattoo1.jpeg", alt: "Tatuaje realista de serpiente y rostro" },
+    { src: "/images/tattoo2.jpeg", alt: "Tatuaje de pecho con diseño Géminis" },
+    { src: "/images/tattoo3.jpeg", alt: "Tatuaje realista de figura religiosa" },
+    { src: "/images/tattoo4.jpeg", alt: "Tatuaje de manga con rostro femenino" },
+    { src: "/images/tattoo5.jpeg", alt: "Tatuaje de pecho y brazo con ancla" },
+    { src: "/images/tattoo6.jpeg", alt: "Tatuaje de manga con escena de ajedrez" },
+    { src: "/images/tattoo7.jpeg", alt: "Tatuaje egipcio con Horus y Ojo de Horus" },
+    { src: "/images/tattoo8.jpeg", alt: "Tatuaje de calavera en antebrazo" },
+    { src: "/images/tattoo9.jpeg", alt: "Tatuaje mandala ornamental en antebrazo" },
+    { src: "/images/tattoo10.jpeg", alt: "Tatuaje realista con ojo y elementos de reloj" },
+    { src: "/images/tattoo11.jpeg", alt: "Tatuaje realista de Jesucristo con corona de espinas" },
+    { src: "/images/tattoo12.jpeg", alt: "Tatuaje mandala geométrico detallado en antebrazo" },
+    { src: "/images/tattoo13.jpeg", alt: "Tatuaje egipcio de Horus con Ojo de Horus" },
+    { src: "/images/tattoo14.jpeg", alt: "Tatuaje de guerrero espartano y figuras mitológicas" },
+    { src: "/images/tattoo15.jpeg", alt: "Tatuaje realista de cabeza de carnero" },
+    { src: "/images/tattoo16.jpeg", alt: "Tatuaje mandala floral geométrico en pecho" },
+    { src: "/images/tattoo17.jpeg", alt: "Tatuaje realista de águila con plumas detalladas" },
+    { src: "/images/tattoo18.jpeg", alt: "Tatuaje realista de tigre rugiendo en manga" },
+    { src: "/images/tattoo19.jpeg", alt: "Tatuaje realista de carnero con cuernos en pierna" },
+    { src: "/images/tattoo20.jpeg", alt: "Tatuaje de espalda completa con retratos realistas" },
+    { src: "/images/tattoo21.jpeg", alt: "Tatuaje de brújula con siluetas y paisaje en mano" },
+    { src: "/images/tattoo22.jpeg", alt: "Tatuaje mitológico de guerreros griegos en antebrazo" },
+    { src: "/images/tattoo23.jpeg", alt: "Tatuaje realista de águila majestuosa en brazo" },
+    { src: "/images/tattoo24.jpeg", alt: "Tatuaje sleeve con rosa, ojo y elementos surrealistas" },
+    { src: "/images/tattoo25.jpeg", alt: "Tatuaje religioso con ángel y sagrado corazón" },
+    { src: "/images/tattoo26.jpeg", alt: "Tatuaje de Ozzy Osbourne en diseño geométrico" },
+    { src: "/images/tattoo27.jpeg", alt: "Tatuaje sleeve completo con águila y tigre" },
+    { src: "/images/tattoo28.jpeg", alt: "Tatuaje religioso de pecho con Jesucristo y Virgen María" },
+    { src: "/images/tattoo29.jpeg", alt: "Tatuaje realista religioso de Jesucristo con corona de espinas en pecho" },
+    { src: "/images/tattoo30.jpeg", alt: "Tatuaje realista de nativo americano anciano con tocado de plumas" },
+    { src: "/images/tattoo31.jpeg", alt: "Tatuaje geométrico mandala con cubo de Metatrón en pierna" },
+    { src: "/images/tattoo32.jpeg", alt: "Tatuaje sleeve de casino con cartas, dados y ruleta en brazo" },
+    { src: "/images/tattoo33.jpeg", alt: "Tatuaje de dragón asiático tradicional a color en costado" },
+    { src: "/images/tattoo34.jpeg", alt: "Tatuaje de flor peonía con mandala en black and gray" },
+    { src: "/images/tattoo35.jpeg", alt: "Tatuaje realista de Buda con flores de loto en antebrazo" },
+    { src: "/images/tattoo36.jpeg", alt: "Sleeve completo con mujer Anonymous y guerrero histórico en realismo" },
+    {
+      src: "/images/tattoo37.jpeg",
+      alt: "Sleeve religioso con figuras barbadas y corona de espinas en black and gray",
+    },
+    { src: "/images/tattoo38.jpeg", alt: "Sleeve nativo americano con lobo y retrato de anciano con tocado" },
+  ]
+
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
+      {/* Header */}
+      <header className="bg-black/95 backdrop-blur-sm sticky top-0 z-50 border-b border-amber-500/20">
+        <div className="container mx-auto px-4 py-4">
+          <nav className="flex items-center justify-between">
+            {/* Left Navigation */}
+            <div className="hidden md:flex space-x-8">
+              <a href="#cursos" className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide">
+                CURSOS
+              </a>
+              <a
+                href="#instructor"
+                className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide"
+              >
+                INSTRUCTOR
+              </a>
+            </div>
+
+            {/* Center Logo */}
+            <div className="flex items-center space-x-3">
+              <div className="text-center">
+                <h1 className="text-xl font-bold text-amber-400 tracking-wider">INK LIFE </h1>
+                <p className="text-xs text-white tracking-widest">TATTOO ACADEMY</p>
+              </div>
+            </div>
+
+            {/* Right Navigation */}
+            <div className="hidden md:flex space-x-8">
+              <a
+                href="#galeria"
+                className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide"
+              >
+                GALERÍA
+              </a>
+
+              <a
+                href="#contacto"
+                className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide"
+              >
+                CONTACTO
+              </a>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                className="text-white hover:text-amber-400"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </button>
+            </div>
+          </nav>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden bg-black/95 backdrop-blur-sm">
+              <div className="px-4 py-6 space-y-4">
+                <a
+                  href="#cursos"
+                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  CURSOS
+                </a>
+                <a
+                  href="#instructor"
+                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  INSTRUCTOR
+                </a>
+                <a
+                  href="#galeria"
+                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  GALERÍA
+                </a>
+                <a
+                  href="#contacto"
+                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  CONTACTO
+                </a>
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage:
+              "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-06-05%20a%20las%2018.24.17_58aafa8a.jpg-ENMouHUseoj83Xfcx2Kvb1fIdsOKkZ.jpeg')",
+            backgroundAttachment: "fixed",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/50"></div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 px-4 max-w-7xl mx-auto">
+          <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-8 md:py-16">
+            {/* Left Column - Text Content */}
+            <div className="text-center md:text-left">
+              <div className="mb-8">
+                <h1 className="text-2xl md:text-5xl lg:text-7xl font-bold mb-4 text-amber-400 tracking-wider font-serif">
+                  INK LIFE
+                </h1>
+                <div className="w-64 h-px bg-gradient-to-r from-amber-400 to-transparent mb-4"></div>
+                <h2 className="text-base md:text-2xl lg:text-4xl font-bold text-white tracking-widest font-serif">
+                  ACADEMIA DE TATUAJES{" "}
+                </h2>
+                <div className="w-64 h-px bg-gradient-to-r from-amber-400 to-transparent mt-4"></div>
+                <p className="text-sm md:text-lg text-amber-400 text-lg tracking-widest mt-6 font-serif">
+                  PUNTA DEL ESTE • URUGUAY
+                </p>
+              </div>
+
+              <p className="text-sm md:text-xl lg:text-2xl text-white mb-8 leading-relaxed">
+                Conviértete en un tatuador profesional con <strong className="text-amber-400">Nico Lemos</strong>,
+                artista con más de 12 años de experiencia en blackwork, realismo y color
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button
+                  size="lg"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-amber-400 tracking-wide"
+                >
+                  VER CURSOS
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg backdrop-blur-sm tracking-wide"
+                >
+                  CONTACTAR AHORA
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Column - Logo */}
+            <div className="flex items-center justify-center mb-8 md:mb-0 -mt-12 md:mt-0 w-full">
+              <div className="w-full h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] flex items-center justify-center px-4 md:px-0">
+                <img
+                  src="/images/ink-life-logo-gold.png"
+                  alt="INK LIFE TATTOO Logo"
+                  className="w-full h-full md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cursos Section */}
+      <section id="cursos" className="relative py-8 md:py-24 px-4 text-white">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/tattoo-process-bg.jpg')",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/80"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto max-w-6xl">
+          <h2 className="text-xl md:text-4xl font-bold mb-4 text-center text-white font-serif tracking-wide">
+            NUESTROS CURSOS
+          </h2>
+          <div className="w-32 h-px bg-white mx-auto mb-6 md:mb-12"></div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 mb-8 md:mb-0">
+            {/* Curso Completo */}
+            <div className="group cursor-pointer hover:z-20 relative">
+              <div className="relative h-[420px] md:h-[550px] [perspective:1000px]">
+                <div className="absolute inset-0 w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  {/* Frente de la tarjeta */}
+                  <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950 border border-blue-600 rounded-lg p-4 md:p-8 flex flex-col shadow-lg shadow-blue-900/50">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-white">Curso Completo</h3>
+                      <Badge className="text-black bg-emerald-300 text-base">Intermedio</Badge>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Calendar className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">2 meses de duración</span>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Clock className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">2 horas por clase</span>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-8">
+                      <Calendar className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">2 veces por semana</span>
+                    </div>
+
+                    <div className="mt-auto text-center">
+                      <span className="text-lg md:text-xl text-gray-400 block mb-2">Haz hover para más detalles</span>
+                      <div className="w-16 h-16 mx-auto rounded-full bg-white/10 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reverso de la tarjeta */}
+                  <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-black via-gray-900 to-blue-900/20 text-white rounded-lg p-4 md:p-8 flex flex-col border border-blue-600/30">
+                    <h3 className="text-lg md:text-2xl font-bold mb-4 border-b border-gray-600 pb-4 text-white">
+                      Contenido del Curso
+                    </h3>
+
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-2">Temas a dar:</h4>
+                      <ul className="space-y-2">
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Bioseguridad</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Estilos de tatuajes</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Máquinas</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Materiales</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Línea sólida</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Relleno sólido</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Color sólido</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Sombras</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <Button className="mt-auto w-full bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-amber-400 tracking-wide">
+                      Inscribirme
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Curso Inicial */}
+            <div className="group cursor-pointer hover:z-20 relative">
+              <div className="relative h-[420px] md:h-[550px] [perspective:1000px]">
+                <div className="absolute inset-0 w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  {/* Frente de la tarjeta */}
+                  <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-gradient-to-br from-green-900 via-green-800 to-emerald-600 border border-green-500 rounded-lg p-4 md:p-8 flex flex-col shadow-lg shadow-green-900/50">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-white">Curso Inicial</h3>
+                      <Badge className="text-black bg-orange-300 text-base">Básico</Badge>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Calendar className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">1 mes de duración</span>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Clock className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">2 horas por clase</span>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-8">
+                      <Calendar className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">2 veces por semana</span>
+                    </div>
+
+                    <div className="mt-auto text-center">
+                      <span className="text-lg md:text-xl text-gray-400 block mb-2">Haz hover para más detalles</span>
+                      <div className="w-16 h-16 mx-auto rounded-full bg-white/10 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reverso de la tarjeta */}
+                  <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-black via-gray-900 to-green-900/20 text-white rounded-lg p-4 md:p-8 flex flex-col border border-green-600/30">
+                    <h3 className="text-lg md:text-2xl font-bold mb-4 border-b border-gray-600 pb-4 text-white">
+                      Contenido del Curso
+                    </h3>
+
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-2">Temas a dar:</h4>
+                      <ul className="space-y-2">
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Bioseguridad</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Estilos de tatuajes</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Máquinas</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Materiales</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Línea sólida</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Relleno sólido</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <Button className="mt-auto w-full bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-amber-400 tracking-wide">
+                      Inscribirme
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Curso Full */}
+            <div className="group cursor-pointer hover:z-20 relative">
+              <div className="relative h-[420px] md:h-[550px] [perspective:1000px]">
+                <div className="absolute inset-0 w-full h-full transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  {/* Frente de la tarjeta */}
+                  <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] bg-gradient-to-br from-purple-900 via-violet-800 to-purple-950 border border-purple-600 rounded-lg p-4 md:p-6 flex flex-col shadow-lg shadow-purple-900/50">
+                    <div className="flex justify-between items-start mb-4">
+                      <h3 className="text-xl md:text-3xl lg:text-4xl font-bold text-white">Curso Full</h3>
+                      <Badge className="text-black bg-purple-300 text-base">Completo</Badge>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Calendar className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">3 meses de duración</span>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-4">
+                      <Clock className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">2 horas por clase</span>
+                    </div>
+
+                    <div className="flex items-center space-x-2 mb-8">
+                      <Calendar className="w-7 h-7 text-gray-400" />
+                      <span className="text-lg md:text-xl text-gray-300">2 veces por semana</span>
+                    </div>
+
+                    <div className="bg-amber-400/20 border border-amber-400/40 p-2 rounded-lg mb-4">
+                      <p className="text-lg font-semibold text-amber-400 flex items-center">
+                        <span className="mr-1">✨</span> Posibilidad laboral en el estudio de tatuaje
+                      </p>
+                    </div>
+
+                    <div className="mt-auto text-center">
+                      <span className="text-lg md:text-xl text-gray-400 block mb-2">Haz hover para más detalles</span>
+                      <div className="w-16 h-16 mx-auto rounded-full bg-white/10 flex items-center justify-center">
+                        <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Reverso de la tarjeta */}
+                  <div className="absolute inset-0 w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-gradient-to-br from-black via-gray-900 to-purple-900/20 text-white rounded-lg p-4 md:p-8 flex flex-col border border-purple-600/30">
+                    <h3 className="text-lg md:text-2xl font-bold mb-4 border-b border-gray-600 pb-4 text-white">
+                      Contenido del Curso
+                    </h3>
+
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-2">Tema a dar:</h4>
+                      <ul className="space-y-2">
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Bioseguridad</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Estilos de tatuajes</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Máquinas</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Materiales</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Línea sólida</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Relleno solido</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Color sólido</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Sombras</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Texturas</span>
+                        </li>
+                        <li className="flex items-start space-x-2">
+                          <CheckCircle className="w-5 h-5 text-green-400 mt-0.5" />
+                          <span>Técnica realismo color y sombra</span>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <Button className="mt-auto w-full bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-amber-400 tracking-wide">
+                      Inscribirme
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 md:mt-16 text-center relative z-10">
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+              Todos nuestros cursos incluyen materiales, certificado de finalización y seguimiento personalizado por
+              parte del instructor.
+            </p>
+            <Button className="bg-white text-black hover:bg-amber-400 hover:text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-400/20 border-2 border-transparent hover:border-amber-400">
+              SOLICITAR INFORMACIÓN
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Instructor Section */}
+      <section id="instructor" className="relative py-8 md:py-24 px-4 min-h-screen flex items-center">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/ink-life-studio.jpeg')",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+        <div className="relative z-10 w-full">
+          <div className="container mx-auto max-w-6xl">
+            <h2 className="text-xl md:text-4xl font-bold mb-4 text-white font-serif tracking-wide text-center">
+              CONOCE A TU INSTRUCTOR
+            </h2>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
+              {/* Left Column - Instructor Card */}
+              <div className="flex justify-center lg:justify-end">
+                <Card className="border border-gray-200 shadow-md overflow-hidden rounded-lg max-w-md w-full">
+                  <div className="aspect-[3/4] w-full overflow-hidden bg-black">
+                    <img
+                      src="/images/nico-lemos-photo.jpeg"
+                      alt="Nico Lemos - Tatuador Profesional"
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    />
+                  </div>
+
+                  <CardContent className="p-6 md:p-8 bg-white">
+                    <h3 className="text-3xl font-semibold mb-2 text-black">Nico Lemos</h3>
+                    <p className="text-sm text-gray-500 uppercase tracking-wider mb-6">Tatuador Profesional</p>
+
+                    <div className="space-y-6 text-gray-800">
+                      <p className="text-base md:text-lg">
+                        Tatuador profesional con más de <strong className="text-black">12 años de experiencia</strong>{" "}
+                        en el arte del tatuaje y artista plástico reconocido.
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-y-3 gap-x-6 border-t border-b border-gray-200 py-4">
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-black" />
+                          <span className="text-sm">Blackwork</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-black" />
+                          <span className="text-sm">Black & Gray</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-black" />
+                          <span className="text-sm">Realismo</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-black" />
+                          <span className="text-sm">Color</span>
+                        </div>
+                      </div>
+
+                      <p className="text-sm">
+                        Vive en <strong className="text-black">Maldonado, Uruguay</strong>, donde combina su estudio de
+                        tatuajes con una academia donde forma a los próximos tatuadores profesionales.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Right Column - Instagram and WhatsApp Content */}
+              <div className="flex justify-center lg:justify-start">
+                <div className="max-w-md w-full space-y-8">
+                  {/* Instagram Card */}
+                  <Card className="border border-amber-400/20 shadow-md overflow-hidden rounded-lg bg-black/80 backdrop-blur-sm">
+                    <CardContent className="p-8">
+                      <div className="text-center mb-6">
+                        <div className="flex items-center justify-center space-x-3 mb-4">
+                          <div className="w-12 h-12 rounded-full overflow-hidden">
+                            <img
+                              src="/images/nico-lemos-photo.jpeg"
+                              alt="Nico Lemos"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-semibold text-white">Instagram</h4>
+                            <p className="text-sm text-gray-400">@nicolemos.tattoo</p>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-300 mb-4">
+                          Nicolas Lemos <br />
+                          Artista <br />
+                          INK LIFE TATTOO <br />
+                          Estudio de tattoo y piercing <br />
+                          ✒️ Desde 2013 <br />
+                          📍🇺🇾Punta del Este, Uruguay <br />
+                          Agenda por mp, wpp ↓
+                        </p>
+                        <Button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-black hover:text-white font-bold px-6 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300">
+                          VISITAR INSTAGRAM
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* WhatsApp Card */}
+                  <Card className="border border-green-400/20 shadow-md overflow-hidden rounded-lg bg-black/80 backdrop-blur-sm">
+                    <CardContent className="p-8">
+                      <div className="text-center mb-6">
+                        <div className="flex items-center justify-center space-x-3 mb-4">
+                          <div className="w-12 h-12 rounded-full overflow-hidden bg-green-500 flex items-center justify-center">
+                            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                            </svg>
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-semibold text-white">WhatsApp</h4>
+                            <p className="text-sm text-gray-400">Contacto directo</p>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-300 mb-4">
+                          ¿Tienes preguntas sobre nuestros cursos? <br />
+                          ¡Contáctanos directamente por WhatsApp! <br />
+                          Respuesta rápida y personalizada <br />📱 +598 92 153 567
+                        </p>
+                        <a
+                          href="https://api.whatsapp.com/send/?phone=59892153567&text&type=phone_number&app_absent=0"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Button className="w-full bg-green-500 hover:bg-green-600 text-white font-bold px-6 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300">
+                            CONTACTAR POR WHATSAPP
+                          </Button>
+                        </a>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Galería Section */}
+      <section id="galeria" className="relative py-8 md:py-24 px-4 bg-gradient-to-b from-black to-gray-900">
+        <div className="container mx-auto max-w-7xl">
+          <h2 className="text-xl md:text-4xl font-bold mb-4 text-center text-amber-400 font-serif tracking-wide">
+            GALERÍA DE TRABAJOS
+          </h2>
+          <div className="w-32 h-px bg-amber-400 mx-auto mb-6"></div>
+          <p className="text-center text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-lg">
+            Explora algunos de los trabajos más destacados realizados por Nico Lemos. Cada tatuaje cuenta una historia
+            única y refleja la maestría técnica y artística de nuestro instructor.
+          </p>
+
+          <Gallery images={galleryImages} />
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contacto" className="relative py-8 md:py-24 px-4">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: "url('/images/contact-us-bg.jpeg')",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/70"></div>
+        </div>
+
+        <div className="relative z-10 container mx-auto max-w-6xl">
+          <h2 className="text-xl md:text-4xl font-bold mb-4 text-center text-white font-serif tracking-wide">
+            CONTACTO
+          </h2>
+          <div className="w-32 h-px bg-white mx-auto mb-6 md:mb-12"></div>
+
+          <p className="text-center text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-lg">
+            ¿Tienes alguna pregunta o deseas inscribirte en nuestros cursos? ¡Contáctanos hoy mismo y comienza tu camino
+            hacia el éxito en el mundo del tatuaje!
+          </p>
+
+          {/* Contact Form */}
+          <div className="max-w-3xl mx-auto bg-black/60 backdrop-blur-sm rounded-lg p-8 md:p-12 border border-amber-400/20">
+            <form className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300">
+                  Nombre
+                </label>
+                <div className="mt-1">
+                  <input
+                    type="text"
+                    id="name"
+                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
+                    placeholder="Tu nombre"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300">
+                  Email
+                </label>
+                <div className="mt-1">
+                  <input
+                    type="email"
+                    id="email"
+                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
+                    placeholder="tu@email.com"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300">
+                  Mensaje
+                </label>
+                <div className="mt-1">
+                  <textarea
+                    rows={4}
+                    id="message"
+                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
+                    placeholder="Escribe tu mensaje aquí..."
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Button
+                  type="submit"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                >
+                  Enviar Mensaje
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black/95 backdrop-blur-sm border-t border-amber-500/20 py-6">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} INK LIFE TATTOO ACADEMY. Todos los derechos reservados.
+          </p>
+        </div>
+      </footer>
+    </div>
+  )
+}
