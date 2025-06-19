@@ -57,17 +57,17 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
       {/* Header */}
-      <header className="bg-black/95 backdrop-blur-sm sticky top-0 z-50 border-b border-amber-500/20">
+      <header className="bg-black/95 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             {/* Left Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <a href="#cursos" className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide">
+            <div className=" hidden md:flex space-x-8">
+              <a href="#cursos" className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide">
                 CURSOS
               </a>
               <a
                 href="#instructor"
-                className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide"
+                className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide"
               >
                 INSTRUCTOR
               </a>
@@ -76,8 +76,8 @@ export default function HomePage() {
             {/* Center Logo */}
             <div className="flex items-center space-x-3">
               <div className="text-center">
-                <h1 className="text-xl font-bold text-amber-400 tracking-wider">INK LIFE </h1>
-                <p className="text-xs text-white tracking-widest">TATTOO ACADEMY</p>
+               <a href="#inicio"><h1 className="text-5xl font-extrabold  text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] tracking-wider text-shadow-green ">INK LIFE </h1></a>
+                <a href="#inicio"><p className="text-xs text-purple-600 tracking-widest">TATTOO ACADEMY</p></a>
               </div>
             </div>
 
@@ -85,14 +85,14 @@ export default function HomePage() {
             <div className="hidden md:flex space-x-8">
               <a
                 href="#galeria"
-                className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide"
+                className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
               >
                 GALERÍA
               </a>
 
               <a
                 href="#contacto"
-                className="text-white hover:text-amber-400 transition-colors font-medium tracking-wide"
+                className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
               >
                 CONTACTO
               </a>
@@ -101,7 +101,7 @@ export default function HomePage() {
             {/* Mobile Menu Button */}
             <div className="md:hidden">
               <button
-                className="text-white hover:text-amber-400"
+                className="text-white hover:text-purple-400"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,28 +117,28 @@ export default function HomePage() {
               <div className="px-4 py-6 space-y-4">
                 <a
                   href="#cursos"
-                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   CURSOS
                 </a>
                 <a
                   href="#instructor"
-                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   INSTRUCTOR
                 </a>
                 <a
                   href="#galeria"
-                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   GALERÍA
                 </a>
                 <a
                   href="#contacto"
-                  className="block text-white hover:text-amber-400 transition-colors font-medium tracking-wide py-2"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   CONTACTO
@@ -150,13 +150,13 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section id="inicio" className="relative min-h-screen flex items-center justify-center">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage:
-              "url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Imagen%20de%20WhatsApp%202025-06-05%20a%20las%2018.24.17_58aafa8a.jpg-ENMouHUseoj83Xfcx2Kvb1fIdsOKkZ.jpeg')",
+              "url('/images/banner.jpg')",
             backgroundAttachment: "fixed",
           }}
         >
@@ -165,52 +165,60 @@ export default function HomePage() {
 
         {/* Hero Content */}
         <div className="relative z-10 px-4 max-w-7xl mx-auto">
+          <div className="absolute inset-0 z-0 block md:hidden flex justify-center items-center overflow-hidden">
+  <img
+    src="/images/ink-life-logo-gold.png"
+    alt="INK LIFE TATTOO Logo"
+    className="object-contain -mt-80"
+  />
+</div>
           <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-8 md:py-16">
             {/* Left Column - Text Content */}
             <div className="text-center md:text-left">
               <div className="mb-8">
-                <h1 className="text-2xl md:text-5xl lg:text-7xl font-bold mb-4 text-amber-400 tracking-wider font-serif">
+                <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider font-serif bg-gradient-to-r from-green-400 via-purple-600 to-green-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(102,126,234,0.9)]">
                   INK LIFE
                 </h1>
-                <div className="w-64 h-px bg-gradient-to-r from-amber-400 to-transparent mb-4"></div>
-                <h2 className="text-base md:text-2xl lg:text-4xl font-bold text-white tracking-widest font-serif">
+                <div className="w-0 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mb-4"></div>
+                <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-widest font-serif bg-gradient-to-r from-green-400 via-purple-600 to-green-400 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(102,126,234,0.9)]">
                   ACADEMIA DE TATUAJES{" "}
                 </h2>
-                <div className="w-64 h-px bg-gradient-to-r from-amber-400 to-transparent mt-4"></div>
-                <p className="text-sm md:text-lg text-amber-400 text-lg tracking-widest mt-6 font-serif">
+                <div className="w-80 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mt-4"></div>
+                <p className="text-sm md:text-lg tracking-widest mt-6 font-serif text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)]">
                   PUNTA DEL ESTE • URUGUAY
                 </p>
               </div>
 
-              <p className="text-sm md:text-xl lg:text-2xl text-white mb-8 leading-relaxed">
-                Conviértete en un tatuador profesional con <strong className="text-amber-400">Nico Lemos</strong>,
-                artista con más de 12 años de experiencia en blackwork, realismo y color
+              <p className="text-1xl md:text-xl lg:text-xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] mb-9 leading-relaxed font-serif">
+               Conviértete en un tatuador profesional con &nbsp; <br />
+                <strong className="text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] font-bold">
+                Nico Lemos, <br />
+                </strong> artista con más de 12 años de experiencia en blackwork, realismo y color.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-black font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-amber-400 tracking-wide"
-                >
+                <a href="#cursos"><Button 
+                  size="lg" 
+                  className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+                  >  
                   VER CURSOS
-                </Button>
-                <Button
+                </Button></a> 
+                <a href="#contacto"><Button
                   size="lg"
-                  variant="outline"
-                  className="border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg backdrop-blur-sm tracking-wide"
+                  className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
                 >
                   CONTACTAR AHORA
-                </Button>
+                </Button></a>
               </div>
             </div>
 
             {/* Right Column - Logo */}
             <div className="flex items-center justify-center mb-8 md:mb-0 -mt-12 md:mt-0 w-full">
-              <div className="w-full h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] flex items-center justify-center px-4 md:px-0">
+              <div className="hidden md:flex w-full h-[300px] md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] flex items-center justify-center px-4 md:px-0">
                 <img
                   src="/images/ink-life-logo-gold.png"
                   alt="INK LIFE TATTOO Logo"
-                  className="w-full h-full md:w-[400px] md:h-[400px] lg:w-[450px] lg:h-[450px] object-contain"
+                  className="w-[800px] h-[900px] md:w-[1100px] md:h-[900px] lg:w-[1100px] lg:h-[900px] object-contain"
                 />
               </div>
             </div>
@@ -317,7 +325,7 @@ export default function HomePage() {
                       </ul>
                     </div>
 
-                    <Button className="mt-auto w-full bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-amber-400 tracking-wide">
+                    <Button className="mt-auto w-full bg-purple-500 hover:bg-purple-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-purple-400 tracking-wide">
                       Inscribirme
                     </Button>
                   </div>
@@ -397,7 +405,7 @@ export default function HomePage() {
                       </ul>
                     </div>
 
-                    <Button className="mt-auto w-full bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-amber-400 tracking-wide">
+                    <Button className="mt-auto w-full bg-purple-500 hover:bg-purple-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-purple-400 tracking-wide">
                       Inscribirme
                     </Button>
                   </div>
@@ -431,8 +439,8 @@ export default function HomePage() {
                       <span className="text-lg md:text-xl text-gray-300">2 veces por semana</span>
                     </div>
 
-                    <div className="bg-amber-400/20 border border-amber-400/40 p-2 rounded-lg mb-4">
-                      <p className="text-lg font-semibold text-amber-400 flex items-center">
+                    <div className="bg-purple-400/20 border border-purple-400/40 p-2 rounded-lg mb-4">
+                      <p className="text-lg font-semibold text-purple-400 flex items-center">
                         <span className="mr-1">✨</span> Posibilidad laboral en el estudio de tatuaje
                       </p>
                     </div>
@@ -499,7 +507,7 @@ export default function HomePage() {
                       </ul>
                     </div>
 
-                    <Button className="mt-auto w-full bg-amber-500 hover:bg-amber-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-amber-400 tracking-wide">
+                    <Button className="mt-auto w-full bg-purple-500 hover:bg-purple-600 text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg shadow-lg border-2 border-purple-400 tracking-wide">
                       Inscribirme
                     </Button>
                   </div>
@@ -513,7 +521,7 @@ export default function HomePage() {
               Todos nuestros cursos incluyen materiales, certificado de finalización y seguimiento personalizado por
               parte del instructor.
             </p>
-            <Button className="bg-white text-black hover:bg-amber-400 hover:text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-amber-400/20 border-2 border-transparent hover:border-amber-400">
+            <Button className="bg-white text-black hover:bg-green-400 hover:text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-400/20 border-2 border-transparent hover:border-green-400">
               SOLICITAR INFORMACIÓN
             </Button>
           </div>
@@ -526,72 +534,72 @@ export default function HomePage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/ink-life-studio.jpeg')",
+            backgroundImage: "url('/images/ink-life-studio.png')",
           }}
         >
           <div className="absolute inset-0 bg-black/70"></div>
         </div>
         <div className="relative z-10 w-full">
           <div className="container mx-auto max-w-6xl">
-            <h2 className="text-xl md:text-4xl font-bold mb-4 text-white font-serif tracking-wide text-center">
+            <h2 className="text-xl md:text-4xl font-bold mb-4 text-white font-serif tracking-wide text-center" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
               CONOCE A TU INSTRUCTOR
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
               {/* Left Column - Instructor Card */}
               <div className="flex justify-center lg:justify-end">
-                <Card className="border border-gray-200 shadow-md overflow-hidden rounded-lg max-w-md w-full">
-                  <div className="aspect-[3/4] w-full overflow-hidden bg-black">
-                    <img
-                      src="/images/nico-lemos-photo.jpeg"
-                      alt="Nico Lemos - Tatuador Profesional"
-                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                    />
+            <Card className="border border-white/10 shadow-lg overflow-hidden rounded-lg max-w-md w-full bg-black/60 backdrop-blur-sm text-white">
+              <div className="aspect-[3/4] w-full overflow-hidden bg-black">
+                <img
+                  src="/images/nico-lemos-photo.jpeg"
+                  alt="Nico Lemos - Tatuador Profesional"
+                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+
+              <CardContent className="p-6 md:p-8">
+                <h3 className="text-3xl font-semibold mb-2 text-white">Nico Lemos</h3>
+                <p className="text-sm text-white/70 uppercase tracking-wider mb-6">Tatuador Profesional</p>
+
+                <div className="space-y-6 text-white/90">
+                  <p className="text-base md:text-lg">
+                    Tatuador profesional con más de <strong className="text-white">12 años de experiencia</strong>{" "}
+                    en el arte del tatuaje y artista plástico reconocido.
+                  </p>
+
+                  <div className="grid grid-cols-2 gap-y-3 gap-x-6 border-t border-b border-white/10 py-4">
+                    <div className="flex items-center space-x-2">
+                      <Palette className="w-4 h-4 text-white" />
+                      <span className="text-sm">Blackwork</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Palette className="w-4 h-4 text-white" />
+                      <span className="text-sm">Black & Gray</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Palette className="w-4 h-4 text-white" />
+                      <span className="text-sm">Realismo</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Palette className="w-4 h-4 text-white" />
+                      <span className="text-sm">Color</span>
+                    </div>
                   </div>
 
-                  <CardContent className="p-6 md:p-8 bg-white">
-                    <h3 className="text-3xl font-semibold mb-2 text-black">Nico Lemos</h3>
-                    <p className="text-sm text-gray-500 uppercase tracking-wider mb-6">Tatuador Profesional</p>
-
-                    <div className="space-y-6 text-gray-800">
-                      <p className="text-base md:text-lg">
-                        Tatuador profesional con más de <strong className="text-black">12 años de experiencia</strong>{" "}
-                        en el arte del tatuaje y artista plástico reconocido.
-                      </p>
-
-                      <div className="grid grid-cols-2 gap-y-3 gap-x-6 border-t border-b border-gray-200 py-4">
-                        <div className="flex items-center space-x-2">
-                          <Palette className="w-4 h-4 text-black" />
-                          <span className="text-sm">Blackwork</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Palette className="w-4 h-4 text-black" />
-                          <span className="text-sm">Black & Gray</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Palette className="w-4 h-4 text-black" />
-                          <span className="text-sm">Realismo</span>
-                        </div>
-                        <div className="flex items-center space-x-2">
-                          <Palette className="w-4 h-4 text-black" />
-                          <span className="text-sm">Color</span>
-                        </div>
-                      </div>
-
-                      <p className="text-sm">
-                        Vive en <strong className="text-black">Maldonado, Uruguay</strong>, donde combina su estudio de
-                        tatuajes con una academia donde forma a los próximos tatuadores profesionales.
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <p className="text-sm">
+                    Vive en <strong className="text-white">Maldonado, Uruguay</strong>, donde combina su estudio de
+                    tatuajes con una academia donde forma a los próximos tatuadores profesionales.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
               </div>
 
               {/* Right Column - Instagram and WhatsApp Content */}
               <div className="flex justify-center lg:justify-start">
                 <div className="max-w-md w-full space-y-8">
                   {/* Instagram Card */}
-                  <Card className="border border-amber-400/20 shadow-md overflow-hidden rounded-lg bg-black/80 backdrop-blur-sm">
+                  <Card className="border border-purple-400/20 shadow-md overflow-hidden rounded-lg bg-black/80 backdrop-blur-sm">
                     <CardContent className="p-8">
                       <div className="text-center mb-6">
                         <div className="flex items-center justify-center space-x-3 mb-4">
@@ -616,9 +624,9 @@ export default function HomePage() {
                           📍🇺🇾Punta del Este, Uruguay <br />
                           Agenda por mp, wpp ↓
                         </p>
-                        <Button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-black hover:text-white font-bold px-6 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300">
+                        <a href="https://www.instagram.com/ink.life_tattoo/"><Button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-black hover:text-white font-bold px-6 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300">
                           VISITAR INSTAGRAM
-                        </Button>
+                        </Button></a>
                       </div>
                     </CardContent>
                   </Card>
@@ -663,14 +671,15 @@ export default function HomePage() {
       </section>
 
       {/* Galería Section */}
-      <section id="galeria" className="relative py-8 md:py-24 px-4 bg-gradient-to-b from-black to-gray-900">
+      <section id="galeria" className="relative py-8 md:py-24 px-4 p-6 md:p-8 bg-[url('/images/texture-dark.png')] bg-cover bg-center bg-fixed text-white">
         <div className="container mx-auto max-w-7xl">
-          <h2 className="text-xl md:text-4xl font-bold mb-4 text-center text-amber-400 font-serif tracking-wide">
+          <h1 className="text-4xl md:text-4xl lg:text-6xl font-bold mb-8 text-center font-serif tracking-widest 
+               text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.85)]" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
             GALERÍA DE TRABAJOS
-          </h2>
-          <div className="w-32 h-px bg-amber-400 mx-auto mb-6"></div>
-          <p className="text-center text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-lg">
-            Explora algunos de los trabajos más destacados realizados por Nico Lemos. Cada tatuaje cuenta una historia
+          </h1>
+          <div className="w-32 h-px bg-purple-400 mx-auto mb-6"></div>
+          <p className="text-center text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto text-xl md:text-2xl" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            Explora algunos de los trabajos más destacados realizados por <br /> Nico Lemos. Cada tatuaje cuenta una historia
             única y refleja la maestría técnica y artística de nuestro instructor.
           </p>
 
@@ -679,7 +688,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="relative py-8 md:py-24 px-4">
+      <section id="contacto" className="relative py-8 md:py-24 px-4 p-6 md:p-8 bg-gradient-to-br from-black via-purple-800 to-green-500 text-white">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -702,7 +711,7 @@ export default function HomePage() {
           </p>
 
           {/* Contact Form */}
-          <div className="max-w-3xl mx-auto bg-black/60 backdrop-blur-sm rounded-lg p-8 md:p-12 border border-amber-400/20">
+          <div className="max-w-3xl mx-auto bg-black/60 backdrop-blur-sm rounded-lg p-8 md:p-12 border border-purple-400/20">
             <form className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300">
@@ -712,7 +721,7 @@ export default function HomePage() {
                   <input
                     type="text"
                     id="name"
-                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
+                    className="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
                     placeholder="Tu nombre"
                   />
                 </div>
@@ -726,7 +735,7 @@ export default function HomePage() {
                   <input
                     type="email"
                     id="email"
-                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
+                    className="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
                     placeholder="tu@email.com"
                   />
                 </div>
@@ -740,7 +749,7 @@ export default function HomePage() {
                   <textarea
                     rows={4}
                     id="message"
-                    className="shadow-sm focus:ring-amber-500 focus:border-amber-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
+                    className="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
                     placeholder="Escribe tu mensaje aquí..."
                   />
                 </div>
@@ -749,7 +758,7 @@ export default function HomePage() {
               <div>
                 <Button
                   type="submit"
-                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500"
+                  className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-black bg-purple-500 hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
                 >
                   Enviar Mensaje
                 </Button>
@@ -760,7 +769,7 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-black/95 backdrop-blur-sm border-t border-amber-500/20 py-6">
+      <footer className="bg-black/95 backdrop-blur-sm border-t border-purple-500/20 py-6">
         <div className="container mx-auto px-4 text-center">
           <p className="text-sm text-gray-400">
             &copy; {new Date().getFullYear()} INK LIFE TATTOO ACADEMY. Todos los derechos reservados.
