@@ -155,6 +155,13 @@ export default function HomePage() {
                   <div className="flex items-center justify-center mb-6">
                     <img src="/images/banner_inkedlife.png" alt="INK LIFE TATTOO" className="h-12 object-contain" />
                   </div>
+                  <div className="flex items-center justify-center mb-4">
+                    <img
+                      src="/images/ink-life-logo-gold.png"
+                      alt="INK LIFE TATTOO Logo"
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
                 </div>
 
                 {/* Navigation Links */}
