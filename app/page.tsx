@@ -202,7 +202,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="text-center md:text-left mb-9">
+              <div className="text-center md:text-left mb-9 max-w-none md:max-w-4xl lg:max-w-5xl">
                 <p className="text-2xl md:text-3xl lg:text-4xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] mb-6 leading-relaxed font-serif">
                   Conviértete en un tatuador profesional con
                 </p>
