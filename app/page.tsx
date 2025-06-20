@@ -71,7 +71,7 @@ export default function HomePage() {
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between">
+          <nav className="flex items-center justify-between font-normal leading-4 leading-5 leading-6 leading-9">
             {/* Left Navigation */}
             <div className=" hidden md:flex space-x-8">
               <button
