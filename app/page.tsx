@@ -135,7 +135,7 @@ export default function HomePage() {
           {isMobileMenuOpen && (
             <div className="fixed inset-0 z-50 md:hidden">
               {/* Backdrop */}
-              <div className="absolute inset-0 bg-black/90 backdrop-blur-lg"></div>
+              <div className="absolute inset-0 bg-black/95 backdrop-blur-xl"></div>
 
               {/* Menu Content */}
               <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
@@ -145,54 +145,56 @@ export default function HomePage() {
                   className="absolute top-8 right-8 text-white hover:text-purple-400 transition-colors"
                   aria-label="Cerrar menú"
                 >
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
 
                 {/* Logo */}
-                <div className="mb-8">
-                  <img
-                    src="/images/banner_inkedlife.png"
-                    alt="INK LIFE TATTOO Logo"
-                    className="w-32 h-32 object-contain"
-                  />
+                <div className="mb-6">
+                  <div className="w-24 h-24 rounded-full border-2 border-red-500 flex items-center justify-center mb-6">
+                    <img
+                      src="/images/ink-life-logo-gold.png"
+                      alt="INK LIFE TATTOO Logo"
+                      className="w-16 h-16 object-contain"
+                    />
+                  </div>
                 </div>
 
                 {/* Title */}
-                <h2 className="text-4xl font-bold text-white mb-12 text-center tracking-wider font-mbf-royal drop-shadow-lg">
+                <h2 className="text-3xl font-bold text-white mb-16 text-center tracking-wider font-mbf-royal">
                   INK LIFE TATTOO
                 </h2>
 
                 {/* Navigation Links */}
-                <nav className="flex flex-col items-center space-y-8">
+                <nav className="flex flex-col items-center space-y-6">
                   <button
                     onClick={() => scrollToSection("inicio")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wider font-mbf-royal"
                   >
                     HOME
                   </button>
                   <button
                     onClick={() => scrollToSection("cursos")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wider font-mbf-royal"
                   >
                     CURSOS
                   </button>
                   <button
                     onClick={() => scrollToSection("instructor")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wider font-mbf-royal"
                   >
                     INSTRUCTOR
                   </button>
                   <button
                     onClick={() => scrollToSection("galeria")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wider font-mbf-royal"
                   >
                     GALERÍA
                   </button>
                   <button
                     onClick={() => scrollToSection("contacto")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wider font-mbf-royal"
                   >
                     CONTACTO
                   </button>
