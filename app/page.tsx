@@ -57,12 +57,15 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
       {/* Header */}
-      <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
+      <header className="sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             {/* Left Navigation */}
             <div className=" hidden md:flex space-x-8">
-              <a href="#cursos" className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide">
+              <a
+                href="#cursos"
+                className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide"
+              >
                 CURSOS
               </a>
               <a
@@ -76,11 +79,7 @@ export default function HomePage() {
             {/* Center Logo */}
 
             <div className="absolute top-[45px] sm:top-[75px] md:top-[90px] lg:top-[75px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[60%] sm:max-w-[40%] md:max-w-[30%] lg:max-w-[25%] drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]">
-              <img
-                src={"/images/banner_inkedlife.png"}
-                alt="logo"
-                className="w-full object-contain"
-              />
+              <img src={"/images/banner_inkedlife.png"} alt="logo" className="w-full object-contain" />
             </div>
 
             {/* <div className="flex items-center space-x-3">
@@ -164,8 +163,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage:
-              "url('/images/banner.jpg')",
+            backgroundImage: "url('/images/banner.jpg')",
             backgroundAttachment: "fixed",
           }}
         >
@@ -175,12 +173,8 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-10 px-4 max-w-7xl mx-auto">
           <div className="absolute inset-0 z-0 block md:hidden flex justify-center items-center overflow-hidden">
-  <img
-    src="/images/ink-life-logo-gold.png"
-    alt="INK LIFE TATTOO Logo"
-    className="object-contain -mt-80"
-  />
-</div>
+            <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO Logo" className="object-contain -mt-80" />
+          </div>
           <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-8 md:py-16">
             {/* Left Column - Text Content */}
             <div className="text-center md:text-left">
@@ -199,25 +193,30 @@ export default function HomePage() {
               </div>
 
               <p className="text-1xl md:text-xl lg:text-xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] mb-9 leading-relaxed font-serif">
-               Conviértete en un tatuador profesional con &nbsp; <br />
+                Conviértete en un tatuador profesional con &nbsp; <br />
                 <strong className="text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] font-bold">
-                Nico Lemos, <br />
-                </strong> artista con más de 12 años de experiencia en blackwork, realismo y color.
+                  Nico Lemos, <br />
+                </strong>{" "}
+                artista con más de 12 años de experiencia en blackwork, realismo y color.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#cursos"><Button 
-                  size="lg" 
-                  className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-                  >  
-                  VER CURSOS
-                </Button></a> 
-                <a href="#contacto"><Button
-                  size="lg"
-                  className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-                >
-                  CONTACTAR AHORA
-                </Button></a>
+                <a href="#cursos">
+                  <Button
+                    size="lg"
+                    className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+                  >
+                    VER CURSOS
+                  </Button>
+                </a>
+                <a href="#contacto">
+                  <Button
+                    size="lg"
+                    className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+                  >
+                    CONTACTAR AHORA
+                  </Button>
+                </a>
               </div>
             </div>
 
@@ -550,58 +549,61 @@ export default function HomePage() {
         </div>
         <div className="relative z-10 w-full">
           <div className="container mx-auto max-w-6xl">
-            <h2 className="text-xl md:text-4xl font-bold mb-4 text-white font-serif tracking-wide text-center" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+            <h2
+              className="text-xl md:text-4xl font-bold mb-4 text-white font-serif tracking-wide text-center"
+              style={{ fontFamily: '"Times New Roman", Times, serif' }}
+            >
               CONOCE A TU INSTRUCTOR
             </h2>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-start">
               {/* Left Column - Instructor Card */}
               <div className="flex justify-center lg:justify-end">
-            <Card className="border border-white/10 shadow-lg overflow-hidden rounded-lg max-w-md w-full bg-black/60 backdrop-blur-sm text-white">
-              <div className="aspect-[3/4] w-full overflow-hidden bg-black">
-                <img
-                  src="/images/nico-lemos-photo.jpeg"
-                  alt="Nico Lemos - Tatuador Profesional"
-                  className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
-              </div>
-
-              <CardContent className="p-6 md:p-8">
-                <h3 className="text-3xl font-semibold mb-2 text-white">Nico Lemos</h3>
-                <p className="text-sm text-white/70 uppercase tracking-wider mb-6">Tatuador Profesional</p>
-
-                <div className="space-y-6 text-white/90">
-                  <p className="text-base md:text-lg">
-                    Tatuador profesional con más de <strong className="text-white">12 años de experiencia</strong>{" "}
-                    en el arte del tatuaje y artista plástico reconocido.
-                  </p>
-
-                  <div className="grid grid-cols-2 gap-y-3 gap-x-6 border-t border-b border-white/10 py-4">
-                    <div className="flex items-center space-x-2">
-                      <Palette className="w-4 h-4 text-white" />
-                      <span className="text-sm">Blackwork</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Palette className="w-4 h-4 text-white" />
-                      <span className="text-sm">Black & Gray</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Palette className="w-4 h-4 text-white" />
-                      <span className="text-sm">Realismo</span>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Palette className="w-4 h-4 text-white" />
-                      <span className="text-sm">Color</span>
-                    </div>
+                <Card className="border border-white/10 shadow-lg overflow-hidden rounded-lg max-w-md w-full bg-black/60 backdrop-blur-sm text-white">
+                  <div className="aspect-[3/4] w-full overflow-hidden bg-black">
+                    <img
+                      src="/images/nico-lemos-photo.jpeg"
+                      alt="Nico Lemos - Tatuador Profesional"
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                    />
                   </div>
 
-                  <p className="text-sm">
-                    Vive en <strong className="text-white">Maldonado, Uruguay</strong>, donde combina su estudio de
-                    tatuajes con una academia donde forma a los próximos tatuadores profesionales.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                  <CardContent className="p-6 md:p-8">
+                    <h3 className="text-3xl font-semibold mb-2 text-white">Nico Lemos</h3>
+                    <p className="text-sm text-white/70 uppercase tracking-wider mb-6">Tatuador Profesional</p>
+
+                    <div className="space-y-6 text-white/90">
+                      <p className="text-base md:text-lg">
+                        Tatuador profesional con más de <strong className="text-white">12 años de experiencia</strong>{" "}
+                        en el arte del tatuaje y artista plástico reconocido.
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-y-3 gap-x-6 border-t border-b border-white/10 py-4">
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-white" />
+                          <span className="text-sm">Blackwork</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-white" />
+                          <span className="text-sm">Black & Gray</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-white" />
+                          <span className="text-sm">Realismo</span>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Palette className="w-4 h-4 text-white" />
+                          <span className="text-sm">Color</span>
+                        </div>
+                      </div>
+
+                      <p className="text-sm">
+                        Vive en <strong className="text-white">Maldonado, Uruguay</strong>, donde combina su estudio de
+                        tatuajes con una academia donde forma a los próximos tatuadores profesionales.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
 
               {/* Right Column - Instagram and WhatsApp Content */}
@@ -633,9 +635,11 @@ export default function HomePage() {
                           📍🇺🇾Punta del Este, Uruguay <br />
                           Agenda por mp, wpp ↓
                         </p>
-                        <a href="https://www.instagram.com/ink.life_tattoo/"><Button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-black hover:text-white font-bold px-6 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300">
-                          VISITAR INSTAGRAM
-                        </Button></a>
+                        <a href="https://www.instagram.com/ink.life_tattoo/">
+                          <Button className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-black hover:text-white font-bold px-6 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300">
+                            VISITAR INSTAGRAM
+                          </Button>
+                        </a>
                       </div>
                     </CardContent>
                   </Card>
@@ -680,16 +684,25 @@ export default function HomePage() {
       </section>
 
       {/* Galería Section */}
-      <section id="galeria" className="relative py-8 md:py-24 px-4 p-6 md:p-8 bg-[url('/images/texture-dark.png')] bg-cover bg-center bg-fixed text-white">
+      <section
+        id="galeria"
+        className="relative py-8 md:py-24 px-4 p-6 md:p-8 bg-[url('/images/texture-dark.png')] bg-cover bg-center bg-fixed text-white"
+      >
         <div className="container mx-auto max-w-7xl">
-          <h1 className="text-4xl md:text-4xl lg:text-6xl font-bold mb-8 text-center font-serif tracking-widest 
-               text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.85)]" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+          <h1
+            className="text-4xl md:text-4xl lg:text-6xl font-bold mb-8 text-center font-serif tracking-widest 
+               text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.85)]"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
             GALERÍA DE TRABAJOS
           </h1>
           <div className="w-32 h-px bg-purple-400 mx-auto mb-6"></div>
-          <p className="text-center text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto text-xl md:text-2xl" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
-            Explora algunos de los trabajos más destacados realizados por <br /> Nico Lemos. Cada tatuaje cuenta una historia
-            única y refleja la maestría técnica y artística de nuestro instructor.
+          <p
+            className="text-center text-gray-300 mb-8 md:mb-12 max-w-2xl mx-auto text-xl md:text-2xl"
+            style={{ fontFamily: '"Times New Roman", Times, serif' }}
+          >
+            Explora algunos de los trabajos más destacados realizados por <br /> Nico Lemos. Cada tatuaje cuenta una
+            historia única y refleja la maestría técnica y artística de nuestro instructor.
           </p>
 
           <Gallery images={galleryImages} />
@@ -697,7 +710,10 @@ export default function HomePage() {
       </section>
 
       {/* Contact Section */}
-      <section id="contacto" className="relative py-8 md:py-24 px-4 p-6 md:p-8 bg-gradient-to-br from-black via-purple-800 to-green-500 text-white">
+      <section
+        id="contacto"
+        className="relative py-8 md:py-24 px-4 p-6 md:p-8 bg-gradient-to-br from-black via-purple-800 to-green-500 text-white"
+      >
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
