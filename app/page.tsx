@@ -152,15 +152,15 @@ export default function HomePage() {
 
                 {/* Logo */}
                 <div className="mb-12">
-                  <div className="flex items-center justify-center mb-6">
-                    <img src="/images/banner_inkedlife.png" alt="INK LIFE TATTOO" className="h-12 object-contain" />
-                  </div>
-                  <div className="flex items-center justify-center mb-4">
+                  <div className="flex items-center justify-center mb-2">
                     <img
                       src="/images/ink-life-logo-gold.png"
                       alt="INK LIFE TATTOO Logo"
-                      className="w-16 h-16 object-contain"
+                      className="w-20 h-20 object-contain"
                     />
+                  </div>
+                  <div className="flex items-center justify-center">
+                    <img src="/images/banner_inkedlife.png" alt="INK LIFE TATTOO" className="h-16 object-contain" />
                   </div>
                 </div>
 
