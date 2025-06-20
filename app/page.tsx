@@ -135,7 +135,7 @@ export default function HomePage() {
           {isMobileMenuOpen && (
             <div className="fixed inset-0 z-50 md:hidden">
               {/* Backdrop */}
-              <div className="absolute inset-0 bg-black/95 backdrop-blur-xl"></div>
+              <div className="absolute inset-0 bg-black"></div>
 
               {/* Menu Content */}
               <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
