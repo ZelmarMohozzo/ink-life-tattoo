@@ -202,7 +202,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <p className="text-1xl md:text-xl lg:text-xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] mb-9 leading-relaxed font-mbf-royal">
+              <p className="text-1xl md:text-xl lg:text-xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] mb-9 leading-relaxed font-serif">
                 Conviértete en un tatuador profesional con &nbsp; <br />
                 <strong className="text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] font-bold">
                   Nico Lemos, <br />
