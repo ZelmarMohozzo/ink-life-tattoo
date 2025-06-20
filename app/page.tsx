@@ -152,7 +152,7 @@ export default function HomePage() {
 
                 {/* Logo */}
                 <div className="mb-12">
-                  <div className="flex items-center justify-center mb-2">
+                  <div className="flex items-center justify-center mb-3">
                     <img
                       src="/images/ink-life-logo-gold.png"
                       alt="INK LIFE TATTOO Logo"
