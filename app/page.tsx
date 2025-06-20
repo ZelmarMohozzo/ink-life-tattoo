@@ -133,32 +133,70 @@ export default function HomePage() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <div className="md:hidden bg-black/95 backdrop-blur-sm">
-              <div className="px-4 py-6 space-y-4">
+            <div className="fixed inset-0 z-50 md:hidden">
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+
+              {/* Menu Content */}
+              <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
+                {/* Close Button */}
                 <button
-                  onClick={() => scrollToSection("cursos")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="absolute top-8 right-8 text-white hover:text-purple-400 transition-colors"
+                  aria-label="Cerrar menú"
                 >
-                  CURSOS
+                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
-                <button
-                  onClick={() => scrollToSection("instructor")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
-                >
-                  INSTRUCTOR
-                </button>
-                <button
-                  onClick={() => scrollToSection("galeria")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
-                >
-                  GALERÍA
-                </button>
-                <button
-                  onClick={() => scrollToSection("contacto")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
-                >
-                  CONTACTO
-                </button>
+
+                {/* Logo */}
+                <div className="mb-8">
+                  <img
+                    src="/images/banner_inkedlife.png"
+                    alt="INK LIFE TATTOO Logo"
+                    className="w-32 h-32 object-contain"
+                  />
+                </div>
+
+                {/* Title */}
+                <h2 className="text-4xl font-bold text-white mb-12 text-center tracking-wider font-mbf-royal">
+                  INK LIFE TATTOO
+                </h2>
+
+                {/* Navigation Links */}
+                <nav className="flex flex-col items-center space-y-8">
+                  <button
+                    onClick={() => scrollToSection("inicio")}
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                  >
+                    HOME
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("cursos")}
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                  >
+                    CURSOS
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("instructor")}
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                  >
+                    INSTRUCTOR
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("galeria")}
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                  >
+                    GALERÍA
+                  </button>
+                  <button
+                    onClick={() => scrollToSection("contacto")}
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                  >
+                    CONTACTO
+                  </button>
+                </nav>
               </div>
             </div>
           )}
