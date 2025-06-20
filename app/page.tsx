@@ -160,7 +160,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="flex items-center justify-center">
-                    <img src="/images/banner_inkedlife.png" alt="INK LIFE TATTOO" className="h-16 object-contain" />
+                    <img src="/images/banner_inkedlife.png" alt="INK LIFE TATTOO" className="h-25 object-contain" />
                   </div>
                 </div>
 
