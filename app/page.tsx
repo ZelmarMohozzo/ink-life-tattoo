@@ -57,7 +57,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
       {/* Header */}
-      <header className="sticky top-0 z-50">
+      <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             {/* Left Navigation */}
@@ -158,13 +158,15 @@ export default function HomePage() {
       </header>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center justify-center">
+      <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: "url('/images/banner.jpg')",
             backgroundAttachment: "fixed",
+            top: "-80px",
+            height: "calc(100% + 80px)",
           }}
         >
           <div className="absolute inset-0 bg-black/50"></div>
@@ -175,7 +177,7 @@ export default function HomePage() {
           <div className="absolute inset-0 z-0 block md:hidden flex justify-center items-center overflow-hidden">
             <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO Logo" className="object-contain -mt-80" />
           </div>
-          <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-8 md:py-16">
+          <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 md:gap-12 items-center min-h-screen py-8 md:py-16 pt-20">
             {/* Left Column - Text Content */}
             <div className="text-center md:text-left">
               <div className="mb-8">
