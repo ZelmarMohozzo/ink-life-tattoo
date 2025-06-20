@@ -1,14 +1,17 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
 
+const inter = Inter({ subsets: ["latin"] })
+
 export const metadata: Metadata = {
-  title: "INK LIFE TATTOO ACADEMY - Academia de Tatuajes en Punta del Este",
+  title: "INK LIFE TATTOO ACADEMY - Cursos de Tatuaje en Punta del Este, Uruguay",
   description:
-    "Aprende el arte del tatuaje con Nico Lemos, tatuador profesional con más de 12 años de experiencia. Cursos de tatuaje en Punta del Este, Uruguay. Especializado en blackwork, realismo y color.",
+    "Aprende el arte del tatuaje con Nico Lemos, tatuador profesional con más de 12 años de experiencia. Cursos de tatuaje en blackwork, realismo y color en Punta del Este, Uruguay.",
   keywords:
-    "tatuajes, academia de tatuajes, curso de tatuaje, Punta del Este, Uruguay, Nico Lemos, blackwork, realismo, tattoo academy",
-  authors: [{ name: "INK LIFE TATTOO ACADEMY" }],
+    "tatuaje, cursos de tatuaje, academia de tatuajes, Nico Lemos, Punta del Este, Uruguay, blackwork, realismo, tatuador profesional",
+  authors: [{ name: "Nico Lemos" }],
   creator: "INK LIFE TATTOO ACADEMY",
   publisher: "INK LIFE TATTOO ACADEMY",
   formatDetection: {
@@ -21,8 +24,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "INK LIFE TATTOO ACADEMY - Academia de Tatuajes",
-    description: "Conviértete en un tatuador profesional con Nico Lemos. Cursos de tatuaje en Punta del Este, Uruguay.",
+    title: "INK LIFE TATTOO ACADEMY - Cursos de Tatuaje Profesional",
+    description: "Conviértete en tatuador profesional con Nico Lemos. Cursos de tatuaje en Punta del Este, Uruguay.",
     url: "https://inklifetattoo.com",
     siteName: "INK LIFE TATTOO ACADEMY",
     images: [
@@ -38,8 +41,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "INK LIFE TATTOO ACADEMY - Academia de Tatuajes",
-    description: "Conviértete en un tatuador profesional con Nico Lemos. Cursos de tatuaje en Punta del Este, Uruguay.",
+    title: "INK LIFE TATTOO ACADEMY - Cursos de Tatuaje",
+    description: "Aprende tatuaje profesional con Nico Lemos en Punta del Este, Uruguay",
     images: ["/images/ink-life-logo-gold.png"],
   },
   robots: {
@@ -54,7 +57,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "tu-codigo-de-verificacion-google",
   },
     generator: 'v0.dev'
 }
@@ -65,7 +68,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className="scroll-smooth">
+    <html lang="es">
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -73,100 +76,9 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-
-        {/* Preload critical fonts */}
-        <link rel="preload" href="/fonts/mbf-royal.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
-
-        {/* Structured Data for SEO */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
-              name: "INK LIFE TATTOO ACADEMY",
-              description: "Academia de tatuajes profesional en Punta del Este, Uruguay",
-              url: "https://inklifetattoo.com",
-              logo: "https://inklifetattoo.com/images/ink-life-logo-gold.png",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Punta del Este",
-                addressRegion: "Maldonado",
-                addressCountry: "UY",
-              },
-              contactPoint: {
-                "@type": "ContactPoint",
-                telephone: "+598-92-153-567",
-                contactType: "customer service",
-                availableLanguage: "Spanish",
-              },
-              founder: {
-                "@type": "Person",
-                name: "Nico Lemos",
-                jobTitle: "Tatuador Profesional",
-                worksFor: {
-                  "@type": "Organization",
-                  name: "INK LIFE TATTOO ACADEMY",
-                },
-              },
-              offers: [
-                {
-                  "@type": "Course",
-                  name: "Curso Inicial de Tatuaje",
-                  description: "Curso básico de tatuaje de 1 mes de duración",
-                  provider: {
-                    "@type": "EducationalOrganization",
-                    name: "INK LIFE TATTOO ACADEMY",
-                  },
-                },
-                {
-                  "@type": "Course",
-                  name: "Curso Completo de Tatuaje",
-                  description: "Curso intermedio de tatuaje de 2 meses de duración",
-                  provider: {
-                    "@type": "EducationalOrganization",
-                    name: "INK LIFE TATTOO ACADEMY",
-                  },
-                },
-                {
-                  "@type": "Course",
-                  name: "Curso Full de Tatuaje",
-                  description: "Curso completo de tatuaje de 3 meses con posibilidad laboral",
-                  provider: {
-                    "@type": "EducationalOrganization",
-                    name: "INK LIFE TATTOO ACADEMY",
-                  },
-                },
-              ],
-            }),
-          }}
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="font-sans antialiased">
-        <div id="root">{children}</div>
-
-        {/* Analytics Scripts */}
-        {process.env.NODE_ENV === "production" && (
-          <>
-            {/* Google Analytics */}
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} />
-            <script
-              dangerouslySetInnerHTML={{
-                __html: `
-                  window.dataLayer = window.dataLayer || [];
-                  function gtag(){dataLayer.push(arguments);}
-                  gtag('js', new Date());
-                  gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                    page_title: document.title,
-                    page_location: window.location.href,
-                  });
-                `,
-              }}
-            />
-          </>
-        )}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }
