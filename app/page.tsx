@@ -156,7 +156,7 @@ export default function HomePage() {
                     <img
                       src="/images/ink-life-logo-gold.png"
                       alt="INK LIFE TATTOO Logo"
-                      className="w-50 h-50 object-contain"
+                      className="w-64 h-64 object-contain"
                     />
                   </div>
                   <div className="flex items-center justify-center">
