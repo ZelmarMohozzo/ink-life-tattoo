@@ -62,8 +62,8 @@ export default function Gallery({ images }: GalleryProps) {
             onClick={() => setFilter(category.id)}
             className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
               filter === category.id
-                ? "bg-amber-500 text-black shadow-lg transform scale-105"
-                : "bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white border border-gray-600"
+                ? "bg-indigo-700 text-emerald-300 shadow-lg transform scale-105"
+                : "bg-black/50 text-gray-300 hover:bg-indigo-700 hover:text-white border border-gray-600"
             }`}
           >
             {category.name}
@@ -77,7 +77,7 @@ export default function Gallery({ images }: GalleryProps) {
         {filteredImages.map((image, index) => (
           <div
             key={`${filter}-${index}`}
-            className="group relative aspect-square overflow-hidden rounded-lg border border-amber-400/20 cursor-pointer hover:border-amber-400 transition-all duration-500 hover:shadow-xl hover:shadow-amber-400/20 hover:-translate-y-2"
+            className="group relative aspect-square overflow-hidden rounded-lg border border-white-400/20 cursor-pointer hover:border-white-400 transition-all duration-500 hover:shadow-xl hover:shadow-white-400/20 hover:-translate-y-2"
             onClick={() => openModal(image.src)}
           >
             <img
@@ -89,7 +89,7 @@ export default function Gallery({ images }: GalleryProps) {
             {/* Overlay */}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
               <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                <div className="w-12 h-12 rounded-full bg-amber-500/90 flex items-center justify-center backdrop-blur-sm">
+                <div className="w-12 h-12 rounded-full bg-white-500/90 flex items-center justify-center backdrop-blur-sm">
                   <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
                       strokeLinecap="round"
@@ -104,7 +104,7 @@ export default function Gallery({ images }: GalleryProps) {
 
             {/* Etiqueta de categoría */}
             <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="px-2 py-1 bg-black/70 text-amber-400 text-xs rounded-full backdrop-blur-sm">
+              <span className="px-2 py-1 bg-black/70 text-purple-400 text-xs rounded-full backdrop-blur-sm">
                 {image.alt.includes("mandala") || image.alt.includes("geométrico")
                   ? "Mandala"
                   : image.alt.includes("realista") ||
@@ -132,19 +132,19 @@ export default function Gallery({ images }: GalleryProps) {
       <div className="mt-12 md:mt-16 text-center">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
           <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-amber-400 mb-2">{images.length}+</div>
+            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">{images.length}+</div>
             <div className="text-gray-300 text-sm md:text-base">Trabajos Realizados</div>
           </div>
           <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-amber-400 mb-2">12+</div>
+            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">12+</div>
             <div className="text-gray-300 text-sm md:text-base">Años de Experiencia</div>
           </div>
           <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-amber-400 mb-2">150+</div>
+            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">150+</div>
             <div className="text-gray-300 text-sm md:text-base">Clientes Satisfechos</div>
           </div>
           <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-amber-400 mb-2">5</div>
+            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">5</div>
             <div className="text-gray-300 text-sm md:text-base">Estilos Dominados</div>
           </div>
         </div>
