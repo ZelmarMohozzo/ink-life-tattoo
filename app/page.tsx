@@ -135,10 +135,10 @@ export default function HomePage() {
           {isMobileMenuOpen && (
             <div className="fixed inset-0 z-50 md:hidden">
               {/* Backdrop */}
-              <div className="absolute inset-0 bg-black"></div>
+              <div className="absolute inset-0 bg-gray-900"></div>
 
               {/* Menu Content */}
-              <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
+              <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 bg-gray-900">
                 {/* Close Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -151,7 +151,7 @@ export default function HomePage() {
                 </button>
 
                 {/* Logo */}
-                <div className="mb-6">
+                <div className="mb-12">
                   <div className="w-24 h-24 rounded-full border-2 border-red-500 flex items-center justify-center mb-6">
                     <img
                       src="/images/ink-life-logo-gold.png"
@@ -159,15 +159,13 @@ export default function HomePage() {
                       className="w-16 h-16 object-contain"
                     />
                   </div>
+                  <h2 className="text-2xl font-bold text-white text-center tracking-wider font-mbf-royal">
+                    INK LIFE TATTOO
+                  </h2>
                 </div>
 
-                {/* Title */}
-                <h2 className="text-3xl font-bold text-white mb-16 text-center tracking-wider font-mbf-royal">
-                  INK LIFE TATTOO
-                </h2>
-
                 {/* Navigation Links */}
-                <nav className="flex flex-col items-center space-y-6">
+                <nav className="flex flex-col items-center space-y-8">
                   <button
                     onClick={() => scrollToSection("inicio")}
                     className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wider font-mbf-royal"
