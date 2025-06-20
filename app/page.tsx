@@ -76,13 +76,13 @@ export default function HomePage() {
             <div className=" hidden md:flex space-x-8">
               <button
                 onClick={() => scrollToSection("cursos")}
-                className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide font-cinzel"
+                className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide font-mbf-royal"
               >
                 CURSOS
               </button>
               <button
                 onClick={() => scrollToSection("instructor")}
-                className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide font-cinzel"
+                className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide font-mbf-royal"
               >
                 INSTRUCTOR
               </button>
@@ -105,14 +105,14 @@ export default function HomePage() {
             <div className="hidden md:flex space-x-8">
               <button
                 onClick={() => scrollToSection("galeria")}
-                className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 font-cinzel"
+                className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 font-mbf-royal"
               >
                 GALERÍA
               </button>
 
               <button
                 onClick={() => scrollToSection("contacto")}
-                className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 font-cinzel"
+                className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 font-mbf-royal"
               >
                 CONTACTO
               </button>
@@ -137,25 +137,25 @@ export default function HomePage() {
               <div className="px-4 py-6 space-y-4">
                 <button
                   onClick={() => scrollToSection("cursos")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-cinzel"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
                 >
                   CURSOS
                 </button>
                 <button
                   onClick={() => scrollToSection("instructor")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-cinzel"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
                 >
                   INSTRUCTOR
                 </button>
                 <button
                   onClick={() => scrollToSection("galeria")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-cinzel"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
                 >
                   GALERÍA
                 </button>
                 <button
                   onClick={() => scrollToSection("contacto")}
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-cinzel"
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left font-mbf-royal"
                 >
                   CONTACTO
                 </button>
@@ -189,20 +189,20 @@ export default function HomePage() {
             {/* Left Column - Text Content */}
             <div className="text-center md:text-left">
               <div className="mb-8">
-                <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-cinzel bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
+                <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   INK LIFE
                 </h1>
                 <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-transparent mb-4"></div>
-                <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-widest font-cinzel text-[#3EB489] bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
+                <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   ACADEMIA DE TATUAJES{" "}
                 </h2>
                 <div className="w-80 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mt-4"></div>
-                <p className="text-sm md:text-lg tracking-widest mt-6 font-cinzel text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)]">
+                <p className="text-sm md:text-lg tracking-widest mt-6 font-mbf-royal text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)]">
                   PUNTA DEL ESTE • URUGUAY
                 </p>
               </div>
 
-              <p className="text-1xl md:text-xl lg:text-xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] mb-9 leading-relaxed font-cinzel">
+              <p className="text-1xl md:text-xl lg:text-xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] mb-9 leading-relaxed font-mbf-royal">
                 Conviértete en un tatuador profesional con &nbsp; <br />
                 <strong className="text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] font-bold">
                   Nico Lemos, <br />
