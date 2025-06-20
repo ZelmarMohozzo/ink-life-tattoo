@@ -119,7 +119,7 @@ export default function HomePage() {
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden">
+            <div className="md:hidden ml-auto">
               <button
                 className="text-white hover:text-purple-400"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -135,7 +135,7 @@ export default function HomePage() {
           {isMobileMenuOpen && (
             <div className="fixed inset-0 z-50 md:hidden">
               {/* Backdrop */}
-              <div className="absolute inset-0 bg-black/80 backdrop-blur-md"></div>
+              <div className="absolute inset-0 bg-black/90 backdrop-blur-lg"></div>
 
               {/* Menu Content */}
               <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8">
@@ -160,7 +160,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-4xl font-bold text-white mb-12 text-center tracking-wider font-mbf-royal">
+                <h2 className="text-4xl font-bold text-white mb-12 text-center tracking-wider font-mbf-royal drop-shadow-lg">
                   INK LIFE TATTOO
                 </h2>
 
@@ -168,31 +168,31 @@ export default function HomePage() {
                 <nav className="flex flex-col items-center space-y-8">
                   <button
                     onClick={() => scrollToSection("inicio")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
                   >
                     HOME
                   </button>
                   <button
                     onClick={() => scrollToSection("cursos")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
                   >
                     CURSOS
                   </button>
                   <button
                     onClick={() => scrollToSection("instructor")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
                   >
                     INSTRUCTOR
                   </button>
                   <button
                     onClick={() => scrollToSection("galeria")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
                   >
                     GALERÍA
                   </button>
                   <button
                     onClick={() => scrollToSection("contacto")}
-                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal"
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wide font-mbf-royal drop-shadow-md"
                   >
                     CONTACTO
                   </button>
