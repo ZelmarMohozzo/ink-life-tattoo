@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Mbf+Royal:wght@400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -107,4 +109,8 @@ section[id] {
   html {
     scroll-behavior: smooth;
   }
+}
+
+.font-mbf-royal {
+  font-family: "Mbf Royal", sans-serif;
 }
