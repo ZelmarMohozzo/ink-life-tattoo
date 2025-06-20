@@ -185,7 +185,7 @@ export default function HomePage() {
           <div className="absolute inset-0 z-0 block md:hidden flex justify-center items-center overflow-hidden">
             <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO Logo" className="object-contain -mt-80" />
           </div>
-          <div className="flex flex-col-reverse md:block items-center min-h-screen py-8 md:py-16 pt-20">
+          <div className="flex flex-col-reverse md:block items-center min-h-screen py-8 md:py-16 pt-32 md:pt-40">
             {/* Text Content - Now spans full width */}
             <div className="text-center md:text-left relative z-20 w-full">
               <div className="mb-8">
