@@ -686,6 +686,31 @@ export default function HomePage() {
                       </div>
                     </CardContent>
                   </Card>
+
+                  {/* Agenda Card */}
+                  <Card className="border border-blue-400/20 shadow-md overflow-hidden rounded-lg bg-black/80 backdrop-blur-sm">
+                    <CardContent className="p-8">
+                      <div className="text-center mb-6">
+                        <div className="flex items-center justify-center space-x-3 mb-4">
+                          <div className="w-12 h-12 rounded-full overflow-hidden bg-blue-500 flex items-center justify-center">
+                            <Calendar className="w-8 h-8 text-white" />
+                          </div>
+                          <div>
+                            <h4 className="text-lg font-semibold text-white">Agendar Cita</h4>
+                            <p className="text-sm text-gray-400">Reserva tu consulta</p>
+                          </div>
+                        </div>
+                        <p className="text-sm text-gray-300 mb-4">
+                          ¿Quieres conocer más sobre nuestros cursos? <br />
+                          ¡Agenda una consulta personalizada! <br />
+                          Evaluamos tu nivel y te recomendamos el mejor curso <br />📅 Consultas gratuitas disponibles
+                        </p>
+                        <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold px-6 py-3 text-base shadow-lg hover:shadow-xl transition-all duration-300">
+                          AGENDAR CONSULTA
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </div>
               </div>
             </div>
