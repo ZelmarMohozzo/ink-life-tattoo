@@ -202,8 +202,8 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="text-center md:text-left mb-9 max-w-none md:max-w-4xl lg:max-w-5xl">
-                <p className="text-2xl md:text-3xl lg:text-4xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] mb-6 leading-relaxed font-serif">
+              <div className="text-center md:text-left mb-9 w-full max-w-none md:max-w-6xl lg:max-w-7xl xl:max-w-full">
+                <p className="text-2xl md:text-3xl lg:text-4xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] mb-6 leading-relaxed font-serif px-0 md:px-4 lg:px-8">
                   Conviértete en un tatuador profesional con
                 </p>
                 <div className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
@@ -211,7 +211,7 @@ export default function HomePage() {
                     Nico Lemos
                   </span>
                 </div>
-                <p className="text-xl md:text-2xl lg:text-3xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] leading-relaxed font-serif">
+                <p className="text-xl md:text-2xl lg:text-3xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] leading-relaxed font-serif px-0 md:px-4 lg:px-8">
                   artista con más de <span className="text-green-400 font-bold">12 años de experiencia</span> en
                   blackwork, realismo y color.
                 </p>
