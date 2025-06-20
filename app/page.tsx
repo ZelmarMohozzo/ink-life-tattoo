@@ -138,7 +138,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gray-900"></div>
 
               {/* Menu Content */}
-              <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 bg-gray-900">
+              <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 bg-[rgba(6,0,17,0.8804347826086957)]">
                 {/* Close Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
