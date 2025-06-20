@@ -54,6 +54,18 @@ export default function HomePage() {
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      const offsetTop = element.offsetTop - 80 // 80px para compensar el navbar
+      window.scrollTo({
+        top: offsetTop,
+        behavior: "smooth",
+      })
+    }
+    setIsMobileMenuOpen(false) // Cerrar menú móvil si está abierto
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
       {/* Header */}
@@ -62,18 +74,18 @@ export default function HomePage() {
           <nav className="flex items-center justify-between">
             {/* Left Navigation */}
             <div className=" hidden md:flex space-x-8">
-              <a
-                href="#cursos"
+              <button
+                onClick={() => scrollToSection("cursos")}
                 className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide"
               >
                 CURSOS
-              </a>
-              <a
-                href="#instructor"
+              </button>
+              <button
+                onClick={() => scrollToSection("instructor")}
                 className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide"
               >
                 INSTRUCTOR
-              </a>
+              </button>
             </div>
 
             {/* Center Logo */}
@@ -91,19 +103,19 @@ export default function HomePage() {
 
             {/* Right Navigation */}
             <div className="hidden md:flex space-x-8">
-              <a
-                href="#galeria"
+              <button
+                onClick={() => scrollToSection("galeria")}
                 className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
               >
                 GALERÍA
-              </a>
+              </button>
 
-              <a
-                href="#contacto"
+              <button
+                onClick={() => scrollToSection("contacto")}
                 className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
               >
                 CONTACTO
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -123,34 +135,30 @@ export default function HomePage() {
           {isMobileMenuOpen && (
             <div className="md:hidden bg-black/95 backdrop-blur-sm">
               <div className="px-4 py-6 space-y-4">
-                <a
-                  href="#cursos"
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                <button
+                  onClick={() => scrollToSection("cursos")}
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left"
                 >
                   CURSOS
-                </a>
-                <a
-                  href="#instructor"
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => scrollToSection("instructor")}
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left"
                 >
                   INSTRUCTOR
-                </a>
-                <a
-                  href="#galeria"
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => scrollToSection("galeria")}
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left"
                 >
                   GALERÍA
-                </a>
-                <a
-                  href="#contacto"
-                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                </button>
+                <button
+                  onClick={() => scrollToSection("contacto")}
+                  className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 w-full text-left"
                 >
                   CONTACTO
-                </a>
+                </button>
               </div>
             </div>
           )}
@@ -203,22 +211,22 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="#cursos">
+                <button onClick={() => scrollToSection("cursos")}>
                   <Button
                     size="lg"
                     className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
                   >
                     VER CURSOS
                   </Button>
-                </a>
-                <a href="#contacto">
+                </button>
+                <button onClick={() => scrollToSection("contacto")}>
                   <Button
                     size="lg"
                     className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
                   >
                     CONTACTAR AHORA
                   </Button>
-                </a>
+                </button>
               </div>
             </div>
 

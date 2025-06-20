@@ -91,3 +91,20 @@
 .rotate-y-180 {
   transform: rotateY(180deg);
 }
+
+/* Scroll suave para navegación */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset para compensar el navbar fijo */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Efecto de scroll más suave en navegadores webkit */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
