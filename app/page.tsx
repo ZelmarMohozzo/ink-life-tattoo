@@ -202,13 +202,20 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <p className="text-1xl md:text-xl lg:text-xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] mb-9 leading-relaxed font-serif">
-                Conviértete en un tatuador profesional con &nbsp; <br />
-                <strong className="text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] font-bold">
-                  Nico Lemos, <br />
-                </strong>{" "}
-                artista con más de 12 años de experiencia en blackwork, realismo y color.
-              </p>
+              <div className="text-center md:text-left mb-9">
+                <p className="text-2xl md:text-3xl lg:text-4xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] mb-6 leading-relaxed font-serif">
+                  Conviértete en un tatuador profesional con
+                </p>
+                <div className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                  <span className="text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.9)] font-mbf-royal">
+                    Nico Lemos
+                  </span>
+                </div>
+                <p className="text-xl md:text-2xl lg:text-3xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] leading-relaxed font-serif">
+                  artista con más de <span className="text-green-400 font-bold">12 años de experiencia</span> en
+                  blackwork, realismo y color.
+                </p>
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <button onClick={() => scrollToSection("cursos")}>
