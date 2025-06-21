@@ -227,15 +227,12 @@ export default function HomePage() {
             {/* Text Content - Now spans full width */}
             <div className="text-center md:text-left relative z-20 w-full">
 
-              {/* Main Heading */}
-              {/* Main Heading Container */}
-              <div className="mb-8">
-                {/* Main Heading Text */}
+              {/*  <div className="mb-8">
                 <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   INK LIFE
                 </h1>
-                {/* Separator Line */}
-
+                */}
+                
                 <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-
                 <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   ACADEMIA DE TATUAJES{" "}
