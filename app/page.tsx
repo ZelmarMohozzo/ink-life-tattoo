@@ -226,17 +226,20 @@ export default function HomePage() {
           <div className="flex flex-col-reverse md:block items-center min-h-screen py-8 md:py-16 pt-32 md:pt-40">
             {/* Text Content - Now spans full width */}
             <div className="text-center md:text-left relative z-20 w-full">
-
               {/*  <div className="mb-8">
                 <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   INK LIFE
                 </h1>
 
               */}
-                
-                <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-
+
+              <div className="mb-8">
+                <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
+                  INK LIFE
+                </h1>
+                <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-transparent mb-4"></div>
                 <h2 className="text-5xl md:text-5xl lg:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
-                  ACADEMIA DE TATUAJES{" "}
+                  ACADEMIA DE TATUAJES
                 </h2>
                 <div className="w-80 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mt-4"></div>
                 <p className="text-sm md:text-lg tracking-widest mt-6 font-mbf-royal text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)]">
