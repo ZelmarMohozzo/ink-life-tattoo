@@ -260,13 +260,16 @@ export default function HomePage() {
                   Nico Lemos
                 </span>
               </div>
-              <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] leading-relaxed font-serif mt-4">
-                artista con más de <span className="text-green-400 font-bold">12 años de experiencia</span> en
-                blackwork, realismo y color.
-              </p>
             </div>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+          <div className="mt-8 text-center md:text-left">
+            <p className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] leading-relaxed font-serif">
+              artista con más de <span className="text-green-400 font-bold">12 años de experiencia</span> en blackwork,
+              realismo y color.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 mt-6">
               <button onClick={() => scrollToSection("cursos")}>
                 <Button
                   size="lg"
