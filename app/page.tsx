@@ -209,7 +209,7 @@ export default function HomePage() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/banner.jpg')",
+            backgroundImage: "url('/images/hero-background-new.jpg')",
             backgroundAttachment: "fixed",
             top: "-80px",
             height: "calc(100% + 80px)",
