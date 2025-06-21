@@ -234,7 +234,7 @@ export default function HomePage() {
               */}
 
               <div className="mb-8">
-              {/*
+                {/*
                 <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   INK LIFE
                 </h1>
@@ -286,7 +286,7 @@ export default function HomePage() {
             </div>
 
             {/* Logo - Now positioned absolutely to allow text overlay */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
+            <div className="absolute -right-16 lg:-right-20 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
               <div className="w-[400px] h-[400px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] flex items-center justify-center opacity-80">
                 <img
                   src="/images/ink-life-logo-gold.png"
