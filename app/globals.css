@@ -75,6 +75,15 @@
   }
 }
 
+/* Definición de la fuente personalizada */
+@font-face {
+  font-family: "Mbf Royal";
+  src: url("/fonts/mbf-royal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Estilos para las tarjetas de cursos */
 .perspective-1000 {
   perspective: 1000px;
@@ -90,4 +99,25 @@
 
 .rotate-y-180 {
   transform: rotateY(180deg);
+}
+
+/* Scroll suave para navegación */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset para compensar el navbar fijo */
+section[id] {
+  scroll-margin-top: 80px;
+}
+
+/* Efecto de scroll más suave en navegadores webkit */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+.font-mbf-royal {
+  font-family: "Mbf Royal", sans-serif;
 }
