@@ -298,13 +298,7 @@ export default function HomePage() {
 
             {/* Mobile Logo */}
             <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
-              <div className="w-[400px] h-[400px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] flex items-center justify-center opacity-80">
-                <img
-                  src="/images/ink-life-logo-gold.png"
-                  alt="INK LIFE TATTOO Logo"
-                  className="w-[800px] h-[900px] lg:w-[900px] lg:h-[1000px] xl:w-[1000px] xl:h-[1100px] object-contain"
-                />
-              </div>
+              
             </div>
         </div>
       </section>
