@@ -221,85 +221,84 @@ export default function HomePage() {
         {/* Hero Content */}
         <div className="relative z-10 px-4 max-w-7xl mx-auto">
           <div className="absolute inset-0 z-0 block md:hidden flex justify-center items-center overflow-hidden">
-            <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO Logo" className="object-contain -mt-80" />
+            <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO Logo" className="object-contain -mt-8" />
           </div>
-          <div className="flex flex-col-reverse md:block items-center min-h-screen py-8 md:py-16 pt-32 md:pt-40">
-            {/* Text Content - Now spans full width */}
-            <div className="text-center md:text-left relative z-20 w-full">
-              {/*  <div className="mb-8">
+        </div>
+        <div className="flex flex-col-reverse md:block items-center min-h-screen py-8 md:py-16 pt-32 md:pt-40">
+          {/* Text Content - Now spans full width */}
+          <div className="text-center md:text-left relative z-20 w-full">
+            {/*  <div className="mb-8">
                 <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   INK LIFE
                 </h1>
 
               */}
 
-              <div className="mb-8">
-                {/*
+            <div className="mb-8">
+              {/*
                 <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
                   INK LIFE
                 </h1>
                */}
 
-                <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-transparent mb-4"></div>
-                <h2 className="text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse">
-                  ACADEMIA DE TATUAJES
-                </h2>
-                <div className="w-80 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mt-4"></div>
-                <p className="text-sm md:text-lg tracking-widest mt-6 font-mbf-royal text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)]">
-                  PUNTA DEL ESTE • URUGUAY
-                </p>
-              </div>
-
-              <div className="text-center md:text-left mb-9 w-full max-w-none pr-0 md:pr-8 lg:pr-16 xl:pr-24">
-                <p className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] mb-6 leading-relaxed font-serif">
-                  Conviértete en un tatuador profesional con
-                </p>
-                <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
-                  <span className="text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.9)] font-mbf-royal">
-                    Nico Lemos
-                  </span>
-                </div>
-                <p className="text-xl md:text-2xl lg:text-3xl xl:text-4xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] leading-relaxed font-serif">
-                  artista con más de <span className="text-green-400 font-bold">12 años de experiencia</span> en
-                  blackwork, realismo y color.
-                </p>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={() => scrollToSection("cursos")}>
-                  <Button
-                    size="lg"
-                    className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-                  >
-                    VER CURSOS
-                  </Button>
-                </button>
-                <button onClick={() => scrollToSection("contacto")}>
-                  <Button
-                    size="lg"
-                    className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-                  >
-                    CONTACTAR AHORA
-                  </Button>
-                </button>
-              </div>
+              <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-transparent mb-4"></div>
+              <h2 className="text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse">
+                ACADEMIA DE TATUAJES
+              </h2>
+              <div className="w-80 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mt-4"></div>
+              <p className="text-sm md:text-lg tracking-widest mt-6 font-mbf-royal text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)]">
+                PUNTA DEL ESTE • URUGUAY
+              </p>
             </div>
 
-            {/* Logo - Now positioned absolutely to allow text overlay */}
-            <div className="absolute -right-16 lg:-right-20 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
-              <div className="w-[400px] h-[400px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] flex items-center justify-center opacity-80">
-                <img
-                  src="/images/ink-life-logo-gold.png"
-                  alt="INK LIFE TATTOO Logo"
-                  className="w-[800px] h-[900px] lg:w-[900px] lg:h-[1000px] xl:w-[1000px] xl:h-[1100px] object-contain"
-                />
+            <div className="text-center md:text-left mb-9 w-full max-w-none pr-0 md:pr-8 lg:pr-16 xl:pr-24">
+              <p className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.8)] mb-6 leading-relaxed font-serif">
+                Conviértete en un tatuador profesional con
+              </p>
+              <div className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6">
+                <span className="text-green-400 drop-shadow-[0_0_10px_rgba(34,197,94,0.9)] font-mbf-royal">
+                  Nico Lemos
+                </span>
               </div>
+              <p className="text-lg md:text-xl lg:text-2xl xl:text-3xl text-purple-200 drop-shadow-[0_0_6px_rgba(168,85,247,0.7)] leading-relaxed font-serif mt-4">
+                artista con más de <span className="text-green-400 font-bold">12 años de experiencia</span> en
+                blackwork, realismo y color.
+              </p>
             </div>
 
-            {/* Mobile Logo */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
-              
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button onClick={() => scrollToSection("cursos")}>
+                <Button
+                  size="lg"
+                  className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+                >
+                  VER CURSOS
+                </Button>
+              </button>
+              <button onClick={() => scrollToSection("contacto")}>
+                <Button
+                  size="lg"
+                  className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+                >
+                  CONTACTAR AHORA
+                </Button>
+              </button>
             </div>
+          </div>
+
+          {/* Logo - Now positioned absolutely to allow text overlay */}
+          <div className="absolute -right-16 lg:-right-20 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
+            <div className="w-[400px] h-[400px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] flex items-center justify-center opacity-80">
+              <img
+                src="/images/ink-life-logo-gold.png"
+                alt="INK LIFE TATTOO Logo"
+                className="w-[800px] h-[900px] lg:w-[900px] lg:h-[1000px] xl:w-[1000px] xl:h-[1100px] object-contain"
+              />
+            </div>
+          </div>
+
+          {/* Mobile Logo */}
+          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 hidden md:block"></div>
         </div>
       </section>
 
