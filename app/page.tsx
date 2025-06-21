@@ -241,7 +241,7 @@ export default function HomePage() {
                */}
 
                 <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-transparent mb-4"></div>
-                <h2 className="text-7xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse">
+                <h2 className="text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse">
                   ACADEMIA DE TATUAJES
                 </h2>
                 <div className="w-80 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mt-4"></div>
