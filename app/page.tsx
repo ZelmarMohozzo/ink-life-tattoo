@@ -135,10 +135,23 @@ export default function HomePage() {
           {isMobileMenuOpen && (
             <div className="fixed inset-0 z-50 md:hidden">
               {/* Backdrop */}
-              <div className="absolute inset-0 bg-gray-900"></div>
+              <div
+                className={`absolute inset-0 transition-all duration-300 ${
+                  isMobileMenuOpen ? "bg-gray-900 opacity-100" : "bg-gray-900 opacity-0"
+                }`}
+              ></div>
 
               {/* Menu Content */}
-              <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 bg-[rgba(6,0,17,0.8804347826086957)]">
+              <div
+                className={`relative z-10 flex flex-col items-center justify-center min-h-screen px-8 transition-all duration-500 ease-out ${
+                  isMobileMenuOpen ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-8 scale-95"
+                }`}
+                style={{
+                  backgroundColor: "rgba(6,0,17,0.9)",
+                }}
+              >
+                {/* Background overlay */}
+
                 {/* Close Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -152,13 +165,6 @@ export default function HomePage() {
 
                 {/* Logo */}
                 <div className="mb-12">
-                  <div className="flex items-center justify-center mb-3">
-                    <img
-                      src="/images/ink-life-logo-gold.png"
-                      alt="INK LIFE TATTOO Logo"
-                      className="w-64 h-64 object-contain"
-                    />
-                  </div>
                   <div className="flex items-center justify-center">
                     <img src="/images/banner_inkedlife.png" alt="INK LIFE TATTOO" className="h-25 object-contain" />
                   </div>
@@ -215,76 +221,55 @@ export default function HomePage() {
             height: "calc(100% + 80px)",
           }}
         >
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0">
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+              style={{
+                backgroundImage: "url('/images/ink-life-logo-gold.png')",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
+            ></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-black/70 to-green-900/50"></div>
+          </div>
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 px-4 max-w-7xl mx-auto">
-          <div className="absolute inset-0 z-0 block md:hidden flex justify-center items-center overflow-hidden">
-            <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO Logo" className="object-contain -mt-80" />
+        <div className="relative z-10 px-4 max-w-7xl mx-auto h-screen">
+          {/* Mobile Logo Background */}
+
+          {/* Title Section - Left Side */}
+          <div className="relative min-h-screen flex justify-center items-center">
+            <h2 className="text-5xl md:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse text-center">
+              ACADEMIA DE TATUAJES
+            </h2>
           </div>
-          <div className="flex flex-col-reverse md:block items-center min-h-screen py-8 md:py-16 pt-32 md:pt-40">
-            {/* Text Content - Now spans full width */}
-            <div className="text-center md:text-left relative z-20 w-full">
-              {/*  <div className="mb-8">
-                <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
-                  INK LIFE
-                </h1>
 
-              */}
-
-              <div className="mb-8">
-                {/*
-                <h1 className="text-9xl md:text-5xl lg:text-7xl font-bold mb-4 tracking-wider text-[#3EB489] font-mbf-royal bg-gradient-to-r from-white bg-clip-text drop-shadow-[0_0_10px_rgba(128,0,128,0.9)]">
-                  INK LIFE
-                </h1>
-               */}
-
-                <div className="w-0 h-px bg-gradient-to-r from-purple via-green-400 to-transparent mb-4"></div>
-                <h2 className="text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse">
-                  ACADEMIA DE TATUAJES
-                </h2>
-                <div className="w-80 h-px bg-gradient-to-r from-purple-600 via-green-400 to-transparent mt-4"></div>
-                
-              </div>
-
-              
-
-              <div className="flex justify-center flex-col sm:flex-row gap-4">
-                <button onClick={() => scrollToSection("cursos")}>
-                  <Button
-                    size="lg"
-                    className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-                  >
-                    VER CURSOS
-                  </Button>
-                </button>
-                <button onClick={() => scrollToSection("contacto")}>
-                  <Button
-                    size="lg"
-                    className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-                  >
-                    CONTACTAR AHORA
-                  </Button>
-                </button>
-              </div>
+          {/* Buttons Section - Bottom Center */}
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="flex justify-center flex-col sm:flex-row gap-4">
+              <button onClick={() => scrollToSection("cursos")}>
+                <Button
+                  size="lg"
+                  className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+                >
+                  VER CURSOS
+                </Button>
+              </button>
+              <button onClick={() => scrollToSection("contacto")}>
+                <Button
+                  size="lg"
+                  className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+                >
+                  CONTACTAR AHORA
+                </Button>
+              </button>
             </div>
+          </div>
 
-            {/* Logo - Now positioned absolutely to allow text overlay */}
-            <div className="absolute -right-16 lg:-right-20 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
-              <div className="w-[400px] h-[400px] lg:w-[450px] lg:h-[450px] xl:w-[500px] xl:h-[500px] flex items-center justify-center opacity-80">
-                <img
-                  src="/images/ink-life-logo-gold.png"
-                  alt="INK LIFE TATTOO Logo"
-                  className="w-[800px] h-[900px] lg:w-[900px] lg:h-[1000px] xl:w-[1000px] xl:h-[1100px] object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Mobile Logo */}
-            <div className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 hidden md:block">
-              
-            </div>
+          {/* Desktop Logo - Far Right Side */}
+          <div className="absolute -right-8 lg:-right-16 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block"></div>
         </div>
       </section>
 
