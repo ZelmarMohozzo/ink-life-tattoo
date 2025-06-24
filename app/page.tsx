@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import Gallery from "@/components/gallery"
+import { submitConsultation, submitContactForm } from "./actions/contact"
 
 export default function HomePage() {
   const galleryImages = [
@@ -53,6 +54,9 @@ export default function HomePage() {
   ]
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState("")
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -84,7 +88,7 @@ export default function HomePage() {
                 onClick={() => scrollToSection("instructor")}
                 className="hover:text-purple-400 text-white hover:text-purple-400 transition-colors font-medium tracking-wide font-mbf-royal"
               >
-                INSTRUCTOR
+                {"ARTISTA\n"}
               </button>
             </div>
 
@@ -102,7 +106,7 @@ export default function HomePage() {
             </div> */}
 
             {/* Right Navigation */}
-            <div className="hidden md:flex space-x-8">
+            <div className="hidden md:flex space-x-8 items-center">
               <button
                 onClick={() => scrollToSection("galeria")}
                 className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 font-mbf-royal"
@@ -115,6 +119,15 @@ export default function HomePage() {
                 className="block text-white hover:text-purple-400 transition-colors font-medium tracking-wide py-2 font-mbf-royal"
               >
                 CONTACTO
+              </button>
+
+              {/* Icono de Calendario */}
+              <button
+                onClick={() => setIsCalendarModalOpen(true)}
+                className="text-white hover:text-purple-400 transition-colors p-2 rounded-full hover:bg-white/10"
+                title="Agendar Cita"
+              >
+                <Calendar className="w-6 h-6" />
               </button>
             </div>
 
@@ -202,6 +215,18 @@ export default function HomePage() {
                   >
                     CONTACTO
                   </button>
+
+                  {/* Icono de Calendario para móvil */}
+                  <button
+                    onClick={() => {
+                      setIsCalendarModalOpen(true)
+                      setIsMobileMenuOpen(false)
+                    }}
+                    className="text-white hover:text-purple-400 transition-colors text-xl font-medium tracking-wider font-mbf-royal flex items-center space-x-2"
+                  >
+                    <Calendar className="w-6 h-6" />
+                    <span>AGENDAR CITA</span>
+                  </button>
                 </nav>
               </div>
             </div>
@@ -232,6 +257,30 @@ export default function HomePage() {
               }}
             ></div>
             <div className="absolute inset-0 bg-gradient-to-br from-purple-900/50 via-black/70 to-green-900/50"></div>
+
+            {/* Texto vertical en la parte derecha */}
+            <div className="absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-between h-96 md:h-[500px] z-20">
+              <div className="transform -rotate-90 origin-center">
+                <a
+                  href="https://www.instagram.com/ink.life_tattoo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-purple-400 transition-colors cursor-pointer font-mbf-royal"
+                >
+                  INSTAGRAM
+                </a>
+              </div>
+              <div className="transform -rotate-90 origin-center">
+                <a
+                  href="https://api.whatsapp.com/send/?phone=59892153567&text&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-green-400 transition-colors cursor-pointer font-mbf-royal"
+                >
+                  WHATSAPP
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -801,7 +850,7 @@ export default function HomePage() {
 
           {/* Contact Form */}
           <div className="max-w-3xl mx-auto bg-black/60 backdrop-blur-sm rounded-lg p-8 md:p-12 border border-purple-400/20">
-            <form className="space-y-6">
+            <form action={submitContactForm} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300">
                   Nombre
@@ -810,8 +859,10 @@ export default function HomePage() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     className="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
                     placeholder="Tu nombre"
+                    required
                   />
                 </div>
               </div>
@@ -824,8 +875,10 @@ export default function HomePage() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     className="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
                     placeholder="tu@email.com"
+                    required
                   />
                 </div>
               </div>
@@ -838,8 +891,10 @@ export default function HomePage() {
                   <textarea
                     rows={4}
                     id="message"
+                    name="message"
                     className="shadow-sm focus:ring-purple-500 focus:border-purple-500 block w-full sm:text-sm border-gray-700 rounded-md bg-gray-800 text-white"
                     placeholder="Escribe tu mensaje aquí..."
+                    required
                   />
                 </div>
               </div>
@@ -856,6 +911,197 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Modal de Formulario de Cita */}
+      {isCalendarModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
+          <div className="relative bg-gradient-to-br from-gray-900 via-purple-900 to-black p-8 rounded-lg shadow-2xl max-w-md w-full mx-4 border border-purple-500/30">
+            {/* Botón de cerrar */}
+            <button
+              onClick={() => setIsCalendarModalOpen(false)}
+              className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
+              aria-label="Cerrar formulario"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Contenido del modal */}
+            <div className="text-center mb-6">
+              <Calendar className="w-12 h-12 text-purple-400 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-white mb-2">Agendar Consulta</h3>
+              <p className="text-gray-300 text-sm">Completa el formulario y nos pondremos en contacto contigo</p>
+            </div>
+
+            {/* Formulario */}
+            <form
+              action={async (formData) => {
+                setIsSubmitting(true)
+                setSubmitMessage("")
+
+                const result = await submitConsultation(formData)
+
+                setIsSubmitting(false)
+                setSubmitMessage(result.message)
+
+                if (result.success) {
+                  // Cerrar modal después de 2 segundos si fue exitoso
+                  setTimeout(() => {
+                    setIsCalendarModalOpen(false)
+                    setSubmitMessage("")
+                  }, 2000)
+                }
+              }}
+              className="space-y-4"
+            >
+              <div>
+                <label htmlFor="modal-name" className="block text-sm font-medium text-gray-300 mb-1">
+                  Nombre completo
+                </label>
+                <input
+                  type="text"
+                  id="modal-name"
+                  name="name"
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="Tu nombre"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="modal-email" className="block text-sm font-medium text-gray-300 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="modal-email"
+                  name="email"
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="tu@email.com"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="modal-phone" className="block text-sm font-medium text-gray-300 mb-1">
+                  Teléfono
+                </label>
+                <input
+                  type="tel"
+                  id="modal-phone"
+                  name="phone"
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="+598 XX XXX XXX"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="modal-course" className="block text-sm font-medium text-gray-300 mb-1">
+                  Curso de interés
+                </label>
+                <select
+                  id="modal-course"
+                  name="course"
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  required
+                  disabled={isSubmitting}
+                >
+                  <option value="">Selecciona un curso</option>
+                  <option value="inicial">Curso Inicial (1 mes)</option>
+                  <option value="completo">Curso Completo (2 meses)</option>
+                  <option value="full">Curso Full (3 meses)</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="modal-date" className="block text-sm font-medium text-gray-300 mb-1">
+                  Fecha preferida
+                </label>
+                <input
+                  type="date"
+                  id="modal-date"
+                  name="date"
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  required
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              <div>
+                <label htmlFor="modal-time" className="block text-sm font-medium text-gray-300 mb-1">
+                  Hora preferida
+                </label>
+                <select
+                  id="modal-time"
+                  name="time"
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  required
+                  disabled={isSubmitting}
+                >
+                  <option value="">Selecciona una hora</option>
+                  <option value="09:00">09:00 AM</option>
+                  <option value="10:00">10:00 AM</option>
+                  <option value="11:00">11:00 AM</option>
+                  <option value="14:00">02:00 PM</option>
+                  <option value="15:00">03:00 PM</option>
+                  <option value="16:00">04:00 PM</option>
+                  <option value="17:00">05:00 PM</option>
+                </select>
+              </div>
+
+              <div>
+                <label htmlFor="modal-message" className="block text-sm font-medium text-gray-300 mb-1">
+                  Mensaje adicional (opcional)
+                </label>
+                <textarea
+                  id="modal-message"
+                  name="message"
+                  rows={3}
+                  className="w-full px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  placeholder="Cuéntanos sobre tu experiencia o expectativas..."
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              {/* Mensaje de estado */}
+              {submitMessage && (
+                <div
+                  className={`p-3 rounded-md text-sm ${
+                    submitMessage.includes("exitosamente")
+                      ? "bg-green-900/50 text-green-300 border border-green-500/50"
+                      : "bg-red-900/50 text-red-300 border border-red-500/50"
+                  }`}
+                >
+                  {submitMessage}
+                </div>
+              )}
+
+              <div className="flex space-x-3 pt-4">
+                <Button
+                  type="button"
+                  onClick={() => setIsCalendarModalOpen(false)}
+                  className="flex-1 bg-gray-600 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+                  disabled={isSubmitting}
+                >
+                  Cancelar
+                </Button>
+                <Button
+                  type="submit"
+                  className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md transition-colors disabled:opacity-50"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Enviando..." : "Enviar Solicitud"}
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="bg-black/95 backdrop-blur-sm border-t border-purple-500/20 py-6">
