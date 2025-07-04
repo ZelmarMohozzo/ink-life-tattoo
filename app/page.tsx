@@ -338,7 +338,7 @@ export default function HomePage() {
           {/* Title Section - Left Side */}
           <div className="relative min-h-screen flex justify-center items-center">
             <h2 className="text-5xl md:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse text-center">
-              ACADEMIA DE TATUAJES
+              ACADEMIA DE TATUAJES!
             </h2>
           </div>
 
