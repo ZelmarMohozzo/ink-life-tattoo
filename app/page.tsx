@@ -286,7 +286,6 @@ export default function HomePage() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
           style={{
             top: "-80px",
-            height: "calc(100% + 80px)",
           }}
         >
           <div className="absolute inset-0">
