@@ -862,7 +862,10 @@ export default function HomePage() {
           <div className="mt-16 md:mt-16 text-center relative z-10">
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               Todos nuestros cursos incluyen materiales, certificado de finalización y seguimiento personalizado por
-              parte del instructor.
+              Aprende el arte del tatuaje con técnicas profesionales y equipamiento de primera calidad. 
+              <span className="block mt-2 text-amber-400 font-semibold">
+                Cursos exclusivamente presenciales • Máximo 2 alumnos por clase
+              </span>
             </p>
             <Button className="bg-white text-black hover:bg-green-400 hover:text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-400/20 border-2 border-transparent hover:border-green-400">
               SOLICITAR INFORMACIÓN
