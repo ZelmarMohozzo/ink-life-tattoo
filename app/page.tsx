@@ -4,8 +4,8 @@ import { useState } from "react"
 import HeroCarousel from "@/components/hero-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
-import HeroCarousel from "@/components/hero-carousel"
 import Gallery from "@/components/gallery"
 import { submitConsultation, submitContactForm } from "./actions/contact"
 
@@ -73,18 +73,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
-        {/* Hero Carousel */}
-        <div className="pt-16">
-          <HeroCarousel />
-        </div>
-      </header>
-        {/* Navigation Bar */}
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
-
-      {/* Header */}
-      <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
+      {/* Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
         <div className="container mx-auto px-4 py-4">
-          <nav className="flex items-center justify-between font-normal leading-4 leading-5 leading-6 leading-9">
+          <div className="flex items-center justify-between font-normal leading-4 leading-5 leading-6 leading-9">
             {/* Left Navigation */}
             <div className=" hidden md:flex space-x-8">
               <button
@@ -108,17 +100,9 @@ export default function HomePage() {
             </div>
 
             {/* Center Logo */}
-
             <div className="absolute top-[45px] sm:top-[75px] md:top-[90px] lg:top-[75px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[60%] sm:max-w-[40%] md:max-w-[30%] lg:max-w-[25%] drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]">
               <img src={"/images/banner_inkedlife.png"} alt="logo" className="w-full object-contain" />
             </div>
-
-            {/* <div className="flex items-center space-x-3">
-              <div className="text-center">
-               <a href="#inicio"><h1 className="text-5xl font-extrabold  text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] tracking-wider text-shadow-green ">INK LIFE </h1></a>
-                <a href="#inicio"><p className="text-xs text-purple-600 tracking-widest">TATTOO ACADEMY</p></a>
-              </div>
-            </div> */}
 
             {/* Right Navigation */}
             <div className="hidden md:flex space-x-8 items-center">
@@ -194,7 +178,7 @@ export default function HomePage() {
                 </svg>
               </button>
             </div>
-          </nav>
+          </div>
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
@@ -215,8 +199,6 @@ export default function HomePage() {
                   backgroundColor: "rgba(6,0,17,0.9)",
                 }}
               >
-                {/* Background overlay */}
-
                 {/* Close Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -290,7 +272,12 @@ export default function HomePage() {
             </div>
           )}
         </div>
-        </nav>
+      </nav>
+
+      {/* Hero Carousel */}
+      <div className="pt-16">
+        <HeroCarousel />
+      </div>
 
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
@@ -342,8 +329,6 @@ export default function HomePage() {
 
         {/* Hero Content */}
         <div className="relative z-10 px-4 max-w-7xl mx-auto h-screen">
-          {/* Mobile Logo Background */}
-
           {/* Title Section - Left Side */}
           <div className="relative min-h-screen flex justify-center items-center">
             <h2 className="text-5xl md:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse text-center">
