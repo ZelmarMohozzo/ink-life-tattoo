@@ -4,6 +4,10 @@ import { useState, useEffect } from "react"
 import { ChevronLeft, ChevronRight, GraduationCap, Palette, Zap, Calendar, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+const HeroCarousel = () => {
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+
 const slides = [
   {
     id: 1,
@@ -60,10 +64,6 @@ const slides = [
   }
 ]
 
-export default function HeroCarousel() {
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
-
   useEffect(() => {
     if (!isAutoPlaying) return
 
@@ -106,7 +106,7 @@ export default function HeroCarousel() {
 
   return (
     <div 
-      className="relative h-screen overflow-hidden"
+      className="relative h-[calc(100vh-4rem)] overflow-hidden"
       onMouseEnter={() => setIsAutoPlaying(false)}
       onMouseLeave={() => setIsAutoPlaying(true)}
     >
@@ -237,3 +237,5 @@ export default function HeroCarousel() {
     </div>
   )
 }
+
+export default HeroCarousel
