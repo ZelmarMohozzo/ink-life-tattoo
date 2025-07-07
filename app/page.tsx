@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Calendar, Clock, Users, Award, Star, MapPin, Phone, Mail, Instagram, CheckCircle, ArrowRight, Palette, Zap, Target, ShoppingCart } from "lucide-react"
+import { Calendar, Clock, Users, Award, Star, MapPin, Phone, Mail, Instagram, CheckCircle, ArrowRight, Palette, Zap, Target, ShoppingCart, UserCheck, Calendar as CalendarIcon, Users2 } from "lucide-react"
 import Gallery from "@/components/gallery"
 import { submitConsultation, submitContactForm } from "./actions/contact"
 import { useToast } from "@/hooks/use-toast"
@@ -75,7 +75,7 @@ function HomePageContent() {
   const { addItem } = useCart()
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  // Datos de los cursos reordenados según solicitud
+  // Datos de los cursos reordenados
   const courses = [
     {
       id: "inicial",
@@ -229,10 +229,13 @@ function HomePageContent() {
 
           <div className="flex items-center space-x-3">
             <CartSidebar />
-            <span className="text-amber-400 hover:text-amber-300 cursor-pointer">
-              <Phone className="w-4 h-4 inline mr-2" />
+            <Button 
+              variant="outline" 
+              className="border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black"
+            >
+              <Phone className="w-4 h-4 mr-2" />
               +598 92 153 567
-            </span>
+            </Button>
           </div>
         </div>
       </header>
@@ -250,13 +253,18 @@ function HomePageContent() {
         
         <div className="relative z-10 container mx-auto px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            {/* Foto del instructor agregada */}
+            {/* Foto del instructor */}
             <div className="mb-8 flex justify-center">
-              <img 
-                src="/images/instructor-nico.png" 
-                alt="Nico Lemos - Instructor" 
-                className="w-24 h-24 rounded-full border-3 border-amber-400 shadow-xl object-cover"
-              />
+              <div className="relative">
+                <img 
+                  src="/images/instructor-nico.png" 
+                  alt="Nico Lemos - Instructor" 
+                  className="w-32 h-32 rounded-full border-4 border-amber-400 shadow-2xl object-cover"
+                />
+                <div className="absolute -bottom-2 -right-2 bg-amber-400 text-black rounded-full p-2">
+                  <UserCheck className="w-4 h-4" />
+                </div>
+              </div>
             </div>
 
             <h1 className="text-5xl md:text-7xl font-bold mb-6 font-mbf-royal">
@@ -267,16 +275,20 @@ function HomePageContent() {
               <span className="text-white">TATTOO ACADEMY</span>
             </h1>
             
-            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl mb-4 text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Conviértete en un tatuador profesional con Nico Lemos
             </p>
 
             {/* Texto destacado sobre cursos presenciales */}
-            <div className="mb-8 p-4 bg-amber-400/20 border border-amber-400 rounded-lg">
-              <p className="text-amber-400 font-bold text-lg">
-                🎯 Cursos Exclusivamente Presenciales
+            <div className="mb-8 p-4 bg-amber-400/10 border border-amber-400/30 rounded-lg backdrop-blur-sm">
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Users2 className="w-5 h-5 text-amber-400" />
+                <CalendarIcon className="w-5 h-5 text-amber-400" />
+              </div>
+              <p className="text-amber-400 font-semibold text-lg">
+                Cursos Exclusivamente Presenciales
               </p>
-              <p className="text-gray-300">
+              <p className="text-gray-300 text-sm">
                 Máximo 2 alumnos por clase para atención personalizada
               </p>
             </div>
@@ -295,10 +307,15 @@ function HomePageContent() {
                 VER CURSOS
               </Button>
               
-              <span className="text-amber-400 hover:text-amber-300 cursor-pointer px-8 py-4 text-lg border border-amber-400 rounded-lg hover:bg-amber-400/10 transition-colors">
-                <Phone className="w-5 h-5 mr-2 inline" />
+              <Button 
+                variant="outline" 
+                size="lg"
+                className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg"
+                onClick={() => document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <Phone className="w-5 h-5 mr-2" />
                 CONTACTAR AHORA
-              </span>
+              </Button>
             </div>
           </div>
         </div>
@@ -380,6 +397,44 @@ function HomePageContent() {
               </Card>
             ))}
           </div>
+
+          {/* Información adicional sobre cursos presenciales */}
+          <div className="mt-16 max-w-4xl mx-auto">
+            <Card className="bg-gradient-to-r from-amber-500/10 to-yellow-500/10 border-amber-500/30">
+              <CardContent className="p-8 text-center">
+                <div className="flex justify-center mb-4">
+                  <div className="bg-amber-500/20 p-3 rounded-full">
+                    <Users2 className="w-8 h-8 text-amber-400" />
+                  </div>
+                </div>
+                <h3 className="text-2xl font-bold text-amber-400 mb-4">
+                  Formación Presencial Exclusiva
+                </h3>
+                <p className="text-gray-300 text-lg leading-relaxed">
+                  Todos nuestros cursos son <strong className="text-amber-400">exclusivamente presenciales</strong> 
+                  para garantizar la mejor calidad de enseñanza. Con un máximo de <strong className="text-amber-400">2 alumnos por clase</strong>, 
+                  aseguramos atención personalizada y un aprendizaje efectivo.
+                </p>
+                <div className="grid md:grid-cols-3 gap-6 mt-8">
+                  <div className="text-center">
+                    <UserCheck className="w-8 h-8 text-amber-400 mx-auto mb-2" />
+                    <h4 className="font-semibold text-white">Atención Personalizada</h4>
+                    <p className="text-sm text-gray-400">Máximo 2 estudiantes por clase</p>
+                  </div>
+                  <div className="text-center">
+                    <CalendarIcon className="w-8 h-8 text-amber-400 mx-auto mb-2" />
+                    <h4 className="font-semibold text-white">Horarios Flexibles</h4>
+                    <p className="text-sm text-gray-400">Coordinamos según tu disponibilidad</p>
+                  </div>
+                  <div className="text-center">
+                    <MapPin className="w-8 h-8 text-amber-400 mx-auto mb-2" />
+                    <h4 className="font-semibold text-white">Ubicación Privilegiada</h4>
+                    <p className="text-sm text-gray-400">Maldonado, Uruguay</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </section>
 
@@ -414,7 +469,6 @@ function HomePageContent() {
                     </span>
                   </h2>
                   <h3 className="text-3xl font-bold text-white mb-4">Nico Lemos</h3>
-                  {/* Nueva descripción según solicitud */}
                   <p className="text-xl text-gray-300 leading-relaxed">
                     Vive en Maldonado, Uruguay, donde combina su estado de tatuador con una academia prestigiosa para formar a los próximos tatuadores profesionales.
                   </p>
@@ -460,7 +514,6 @@ function HomePageContent() {
 
               <div className="relative">
                 <div className="relative z-10">
-                  {/* Foto del instructor actualizada */}
                   <img 
                     src="/images/instructor-nico.png" 
                     alt="Nico Lemos - Instructor Principal" 
