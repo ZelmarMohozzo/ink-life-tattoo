@@ -280,84 +280,8 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
-          style={{
-            top: "-80px",
-          }}
-        >
-          <div className="absolute inset-0">
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-              style={{
-                backgroundImage: "url('/images/ink-life-logo-gold.png')",
-                backgroundSize: "contain",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-              }}
-            ></div>
-            <HeroCarousel />
-
-            {/* Texto vertical en la parte derecha */}
-            <div className="absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-between h-96 md:h-[500px] z-20">
-              <div className="transform -rotate-90 origin-center">
-                <a
-                  href="https://www.instagram.com/ink.life_tattoo/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-purple-400 transition-colors cursor-pointer font-mbf-royal"
-                >
-                  INSTAGRAM
-                </a>
-              </div>
-              <div className="transform -rotate-90 origin-center">
-                <a
-                  href="https://api.whatsapp.com/send/?phone=59892153567&text&type=phone_number&app_absent=0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-green-400 transition-colors cursor-pointer font-mbf-royal"
-                >
-                  WHATSAPP
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 px-4 max-w-7xl mx-auto h-screen">
-          {/* Title Section - Left Side */}
-          <div className="relative min-h-screen flex justify-center items-center">
-            <h2 className="text-5xl md:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse text-center">
-              ACADEMIA DE TATUAJES
-            </h2>
-          </div>
-
-          {/* Buttons Section - Bottom Center */}
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
-            <div className="flex justify-center flex-col sm:flex-row gap-4">
-              <Button
-                onClick={() => scrollToSection("cursos")}
-                size="lg"
-                className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-              >
-                VER CURSOS
-              </Button>
-              <Button
-                onClick={() => scrollToSection("contacto")}
-                size="lg"
-                className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-              >
-                CONTACTAR AHORA
-              </Button>
-            </div>
-          </div>
-
-          {/* Desktop Logo - Far Right Side */}
-          <div className="absolute -right-8 lg:-right-16 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block"></div>
-        </div>
+      <section id="inicio" className="relative min-h-screen overflow-hidden">
+        <HeroCarousel />
       </section>
 
       {/* Galería Section */}
