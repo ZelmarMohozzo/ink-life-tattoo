@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import HeroCarousel from "@/components/hero-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
@@ -72,6 +73,9 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
+      {/* Hero Carousel */}
+      <HeroCarousel />
+
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4">
