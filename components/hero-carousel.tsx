@@ -140,8 +140,8 @@ const slides = [
                   </div>
 
                   {/* Title */}
-                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-mbf-royal tracking-widest">
-                    <span className="bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse">
+                  <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-mbf-royal">
+                    <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
                       {slide.title}
                     </span>
                   </h1>
