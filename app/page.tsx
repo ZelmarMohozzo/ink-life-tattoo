@@ -157,7 +157,12 @@ export default function HomePage() {
               <img 
                 src="/images/banner_inkedlife.png" 
                 alt="INK LIFE TATTOO ACADEMY" 
-                className="h-12 md:h-16 w-auto"
+                className="h-12 md:h-16 w-auto object-contain"
+                onError={(e) => {
+                  console.log('Error loading image:', e);
+                  e.currentTarget.style.display = 'none';
+                }}
+                onLoad={() => console.log('Image loaded successfully')}
               />
             </div>
 
