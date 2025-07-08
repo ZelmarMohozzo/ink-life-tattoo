@@ -491,10 +491,6 @@ export default function HomePage() {
                           INK LIFE TATTOO <br />
                           Estudio de tattoo y piercing <br />
                           ✒️ Desde 2013 <br />
-      <section id="inicio">
-        <HeroCarousel />
-      </section>
-
       {/* Cursos Section */}
       <section id="cursos" className="relative py-8 md:py-24 px-4 text-white">
         {/* Background Image */}
