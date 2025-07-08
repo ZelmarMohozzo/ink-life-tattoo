@@ -159,17 +159,22 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-sm border-b border-gray-800">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/95 backdrop-blur-md border-b border-purple-500/20">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO" className="h-10 w-auto" />
-              <span className="font-bold text-xl font-mbf-royal">INK LIFE</span>
+            <div className="flex items-center space-x-3">
+              <img src="/images/ink-life-logo-gold.png" alt="INK LIFE TATTOO" className="h-12 w-auto" />
+              <div className="flex flex-col">
+                <span className="font-bold text-xl font-mbf-royal bg-gradient-to-r from-amber-400 to-yellow-300 bg-clip-text text-transparent">
+                  INK LIFE
+                </span>
+                <span className="text-xs text-gray-400 font-medium tracking-wider">TATTOO ACADEMY</span>
+              </div>
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-10">
               {[
                 { id: "inicio", label: "INICIO" },
                 { id: "cursos", label: "CURSOS" },
@@ -181,7 +186,7 @@ export default function Home() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`text-sm font-medium transition-colors hover:text-purple-400 ${
-                    activeSection === item.id ? "text-purple-400" : "text-gray-300"
+                    activeSection === item.id ? "text-purple-400 border-b-2 border-purple-400 pb-1" : "text-gray-300 hover:text-white"
                   }`}
                 >
                   {item.label}
@@ -191,7 +196,7 @@ export default function Home() {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden text-white"
+              className="lg:hidden text-white hover:text-purple-400 transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -201,7 +206,7 @@ export default function Home() {
 
           {/* Mobile Navigation */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-800">
+            <div className="lg:hidden py-6 border-t border-purple-500/20 bg-black/98 backdrop-blur-md">
               <div className="flex flex-col space-y-4">
                 {[
                   { id: "inicio", label: "INICIO" },
@@ -214,7 +219,7 @@ export default function Home() {
                     key={item.id}
                     onClick={() => scrollToSection(item.id)}
                     className={`text-left text-sm font-medium transition-colors hover:text-purple-400 ${
-                      activeSection === item.id ? "text-purple-400" : "text-gray-300"
+                      activeSection === item.id ? "text-purple-400 pl-4 border-l-2 border-purple-400" : "text-gray-300 hover:text-white hover:pl-2"
                     }`}
                   >
                     {item.label}
