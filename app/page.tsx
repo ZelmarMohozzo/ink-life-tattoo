@@ -287,7 +287,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
         {/* Background Image */}
-        <div
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/95 via-black/90 to-emerald-900/95" />
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
           style={{
             top: "-80px",
@@ -337,9 +337,27 @@ export default function HomePage() {
           {/* Mobile Logo Background */}
 
           {/* Title Section - Left Side */}
-          <div className="relative min-h-screen flex justify-center items-center">
-            <h2 className="text-5xl md:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse text-center">
-              ACADEMIA DE TATUAJES
+          {/* Logo/Brand Section */}
+          <div className="mb-8">
+            <div className="inline-block p-6 border-2 border-amber-400/50 rounded-lg bg-black/30 backdrop-blur-sm">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-mbf-royal leading-tight">
+                <span className="block text-amber-400 drop-shadow-2xl">INK LIFE</span>
+                <span className="block text-2xl md:text-3xl lg:text-4xl text-emerald-300 font-light tracking-widest mt-2">
+                  TATTOO ACADEMY
+                </span>
+              </h1>
+              <div className="flex items-center justify-center mt-4 space-x-4">
+                <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent flex-1"></div>
+                <div className="w-3 h-3 bg-amber-400 rotate-45"></div>
+                <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent flex-1"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Subtitle */}
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+            <span className="bg-gradient-to-r from-purple-300 via-white to-emerald-300 bg-clip-text text-transparent">
+              ACADEMIA DE TATUAJES PROFESIONAL
             </h2>
           </div>
 
@@ -954,16 +972,39 @@ export default function HomePage() {
           <div
             className="relative bg-gradient-to-br from-gray-900 via-purple-900 to-black p-8 rounded-lg shadow-2xl max-w-md w-full mx-4 border border-purple-500/30"
             onClick={(e) => e.stopPropagation()}
-          >
-            {/* Botón de cerrar */}
-            <button
+          </h2>
+
+          {/* Description */}
+          <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed">
+            Conviértete en un tatuador profesional con <span className="text-amber-400 font-semibold">Nico Lemos</span>. 
+            Más de <span className="text-emerald-400 font-semibold">12 años de experiencia</span> te esperan en nuestra academia.
               onClick={() => setIsCalendarModalOpen(false)}
+
+          {/* Features badges */}
+          <div className="flex flex-wrap justify-center gap-4 mb-10">
+            <div className="bg-purple-600/20 border border-purple-400/30 rounded-full px-6 py-3 backdrop-blur-sm">
+              <span className="text-purple-300 font-medium">✨ Cursos Presenciales</span>
+            </div>
+            <div className="bg-emerald-600/20 border border-emerald-400/30 rounded-full px-6 py-3 backdrop-blur-sm">
+              <span className="text-emerald-300 font-medium">👥 Máximo 2 Alumnos</span>
+            </div>
+            <div className="bg-amber-600/20 border border-amber-400/30 rounded-full px-6 py-3 backdrop-blur-sm">
+              <span className="text-amber-300 font-medium">🏆 Certificación Profesional</span>
+            </div>
+          </div>
+
+          {/* CTA Buttons */}
               className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
               aria-label="Cerrar formulario"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              className="group bg-gradient-to-r from-purple-600 to-emerald-500 hover:from-purple-700 hover:to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl border border-white/20"
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
+              <span className="flex items-center space-x-2">
+                <span>Ver Cursos</span>
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
             </button>
 
             {/* Contenido del modal */}
@@ -992,7 +1033,7 @@ export default function HomePage() {
                   }, 2000)
                 }
               }}
-              className="space-y-4"
+              className="group border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
             >
               <div>
                 <label htmlFor="modal-name" className="block text-sm font-medium text-gray-300 mb-1">
@@ -1136,8 +1177,20 @@ export default function HomePage() {
                 >
                   {isSubmitting ? "Enviando..." : "Enviar Solicitud"}
                 </Button>
-              </div>
+              <span className="flex items-center space-x-2">
+                <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span>Contactar</span>
+              </span>
             </form>
+          </div>
+
+          {/* Scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-amber-400/50 rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-amber-400 rounded-full mt-2 animate-pulse"></div>
+            </div>
           </div>
         </div>
       )}
