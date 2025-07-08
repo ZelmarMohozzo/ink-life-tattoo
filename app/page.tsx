@@ -286,6 +286,7 @@ export default function HomePage() {
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
           style={{
             top: "-80px",
+            height: "calc(100% + 80px)",
           }}
         >
           <div className="absolute inset-0">
@@ -298,7 +299,7 @@ export default function HomePage() {
                 backgroundPosition: "center",
               }}
             ></div>
-            <HeroCarousel />
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/80 to-black/80 md:bg-gradient-to-br md:from-purple-900/50 md:via-black/70 md:to-green-900/50"></div>
 
             {/* Texto vertical en la parte derecha */}
             <div className="absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-between h-96 md:h-[500px] z-20">
