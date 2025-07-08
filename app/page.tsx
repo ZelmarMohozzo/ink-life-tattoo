@@ -8,7 +8,7 @@ import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
 import Gallery from "@/components/gallery"
 import { submitConsultation, submitContactForm } from "./actions/contact"
 
-export default function HomePage() {
+function HomePage() {
   const galleryImages = [
     { src: "/images/tattoo1.jpeg", alt: "Tatuaje realista de serpiente y rostro" },
     { src: "/images/tattoo2.jpeg", alt: "Tatuaje de pecho con diseño Géminis" },
@@ -1237,4 +1237,3 @@ export default function HomePage() {
       </footer>
     </div>
   )
-}
