@@ -4,7 +4,6 @@ import { useState } from "react"
 import HeroCarousel from "@/components/hero-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
 import Gallery from "@/components/gallery"
 import { submitConsultation, submitContactForm } from "./actions/contact"
@@ -280,7 +279,80 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+          style={{ backgroundImage: 'url(/images/hero-background-new.jpg)' }}
+        />
+        
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <div className="max-w-4xl mx-auto">
+            {/* Main Title */}
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 font-mbf-royal">
+              <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+                INK LIFE TATTOO ACADEMY
+              </span>
+            </h1>
+            
+            {/* Subtitle */}
+            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-200">
+              Aprende el Arte del Tatuaje
+            </h2>
+            
+            {/* Description */}
+            <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
+              Conviértete en un tatuador profesional con Nico Lemos. Más de 12 años de experiencia te esperan en nuestra academia. Cursos presenciales con máximo 2 alumnos por clase para una atención personalizada.
+            </p>
+            
+            {/* Features */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
+              <div className="flex items-center justify-center md:justify-start space-x-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                <span className="text-gray-200">Instructor con 12+ años de experiencia</span>
+              </div>
+              <div className="flex items-center justify-center md:justify-start space-x-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                <span className="text-gray-200">Clases presenciales personalizadas</span>
+              </div>
+              <div className="flex items-center justify-center md:justify-start space-x-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                <span className="text-gray-200">Máximo 2 alumnos por clase</span>
+              </div>
+              <div className="flex items-center justify-center md:justify-start space-x-2">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
+                <span className="text-gray-200">Certificación profesional</span>
+              </div>
+            </div>
+            
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Button
+                onClick={() => document.getElementById("cursos")?.scrollIntoView({ behavior: "smooth" })}
+                className="bg-gradient-to-r from-purple-600 to-emerald-500 hover:from-purple-700 hover:to-emerald-600 text-white px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+              >
+                Ver Cursos
+              </Button>
+              
+              <Button
+                onClick={() => document.getElementById("galeria")?.scrollIntoView({ behavior: "smooth" })}
+                variant="outline"
+                className="border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
+              >
+                Ver Galería
+              </Button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
+            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
+          </div>
+        </div>
+      </section>
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
