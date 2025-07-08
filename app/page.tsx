@@ -287,7 +287,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
         {/* Background Image */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/95 via-black/90 to-emerald-900/95" />
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
           style={{
             top: "-80px",
@@ -358,7 +358,7 @@ export default function HomePage() {
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
             <span className="bg-gradient-to-r from-purple-300 via-white to-emerald-300 bg-clip-text text-transparent">
               ACADEMIA DE TATUAJES PROFESIONAL
-            </h2>
+            </span>
           </div>
 
           {/* Buttons Section - Bottom Center */}
@@ -1012,7 +1012,7 @@ export default function HomePage() {
               <Calendar className="w-12 h-12 text-purple-400 mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-white mb-2">Agendar Consulta</h3>
               <p className="text-gray-300 text-sm">Completa el formulario y nos pondremos en contacto contigo</p>
-            </div>
+          </div>
 
             {/* Formulario */}
             <form
@@ -1033,7 +1033,7 @@ export default function HomePage() {
                   }, 2000)
                 }
               }}
-              className="group border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 backdrop-blur-sm"
+              className="space-y-4"
             >
               <div>
                 <label htmlFor="modal-name" className="block text-sm font-medium text-gray-300 mb-1">
@@ -1177,14 +1177,10 @@ export default function HomePage() {
                 >
                   {isSubmitting ? "Enviando..." : "Enviar Solicitud"}
                 </Button>
-              <span className="flex items-center space-x-2">
-                <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                </svg>
-                <span>Contactar</span>
-              </span>
             </form>
           </div>
+        </div>
+      )}
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
@@ -1193,7 +1189,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      )}
 
       {/* Footer */}
       <footer className="bg-black/95 backdrop-blur-sm border-t border-purple-500/20 py-6">
