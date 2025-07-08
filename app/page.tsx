@@ -5,10 +5,11 @@ import HeroCarousel from "@/components/hero-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
+import HeroCarousel from "@/components/hero-carousel"
 import Gallery from "@/components/gallery"
 import { submitConsultation, submitContactForm } from "./actions/contact"
 
-function HomePage() {
+export default function HomePage() {
   const galleryImages = [
     { src: "/images/tattoo1.jpeg", alt: "Tatuaje realista de serpiente y rostro" },
     { src: "/images/tattoo2.jpeg", alt: "Tatuaje de pecho con diseño Géminis" },
@@ -72,10 +73,18 @@ function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
-      {/* Navigation Bar */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+        {/* Hero Carousel */}
+        <div className="pt-16">
+          <HeroCarousel />
+        </div>
+      </header>
+        {/* Navigation Bar */}
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+
+      {/* Header */}
+      <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between font-normal leading-4 leading-5 leading-6 leading-9">
+          <nav className="flex items-center justify-between font-normal leading-4 leading-5 leading-6 leading-9">
             {/* Left Navigation */}
             <div className=" hidden md:flex space-x-8">
               <button
@@ -99,9 +108,17 @@ function HomePage() {
             </div>
 
             {/* Center Logo */}
+
             <div className="absolute top-[45px] sm:top-[75px] md:top-[90px] lg:top-[75px] left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-[60%] sm:max-w-[40%] md:max-w-[30%] lg:max-w-[25%] drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)]">
               <img src={"/images/banner_inkedlife.png"} alt="logo" className="w-full object-contain" />
             </div>
+
+            {/* <div className="flex items-center space-x-3">
+              <div className="text-center">
+               <a href="#inicio"><h1 className="text-5xl font-extrabold  text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] tracking-wider text-shadow-green ">INK LIFE </h1></a>
+                <a href="#inicio"><p className="text-xs text-purple-600 tracking-widest">TATTOO ACADEMY</p></a>
+              </div>
+            </div> */}
 
             {/* Right Navigation */}
             <div className="hidden md:flex space-x-8 items-center">
@@ -177,7 +194,7 @@ function HomePage() {
                 </svg>
               </button>
             </div>
-          </div>
+          </nav>
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
@@ -198,6 +215,8 @@ function HomePage() {
                   backgroundColor: "rgba(6,0,17,0.9)",
                 }}
               >
+                {/* Background overlay */}
+
                 {/* Close Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -271,88 +290,10 @@ function HomePage() {
             </div>
           )}
         </div>
-      </nav>
-
-      {/* Hero Carousel */}
-      <div className="pt-16">
-        <HeroCarousel />
-      </div>
+        </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-purple-900 to-black text-white overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
-          style={{ backgroundImage: 'url(/images/hero-background-new.jpg)' }}
-        />
-        
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center">
-          <div className="max-w-4xl mx-auto">
-            {/* Main Title */}
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 font-mbf-royal">
-              <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
-                INK LIFE TATTOO ACADEMY
-              </span>
-            </h1>
-            
-            {/* Subtitle */}
-            <h2 className="text-2xl md:text-3xl font-semibold mb-6 text-gray-200">
-              Aprende el Arte del Tatuaje
-            </h2>
-            
-            {/* Description */}
-            <p className="text-lg md:text-xl mb-8 text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Conviértete en un tatuador profesional con Nico Lemos. Más de 12 años de experiencia te esperan en nuestra academia. Cursos presenciales con máximo 2 alumnos por clase para una atención personalizada.
-            </p>
-            
-            {/* Features */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 max-w-2xl mx-auto">
-              <div className="flex items-center justify-center md:justify-start space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
-                <span className="text-gray-200">Instructor con 12+ años de experiencia</span>
-              </div>
-              <div className="flex items-center justify-center md:justify-start space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
-                <span className="text-gray-200">Clases presenciales personalizadas</span>
-              </div>
-              <div className="flex items-center justify-center md:justify-start space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
-                <span className="text-gray-200">Máximo 2 alumnos por clase</span>
-              </div>
-              <div className="flex items-center justify-center md:justify-start space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full" />
-                <span className="text-gray-200">Certificación profesional</span>
-              </div>
-            </div>
-            
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                onClick={() => document.getElementById("cursos")?.scrollIntoView({ behavior: "smooth" })}
-                className="bg-gradient-to-r from-purple-600 to-emerald-500 hover:from-purple-700 hover:to-emerald-600 text-white px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                Ver Cursos
-              </Button>
-              
-              <Button
-                onClick={() => document.getElementById("galeria")?.scrollIntoView({ behavior: "smooth" })}
-                variant="outline"
-                className="border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-black px-8 py-3 text-lg font-semibold rounded-full transition-all duration-300 transform hover:scale-105"
-              >
-                Ver Galería
-              </Button>
-            </div>
-          </div>
-        </div>
-        
-        {/* Decorative Elements */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse" />
-          </div>
-        </div>
-      </section>
+      <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
         {/* Background Image */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
@@ -401,6 +342,8 @@ function HomePage() {
 
         {/* Hero Content */}
         <div className="relative z-10 px-4 max-w-7xl mx-auto h-screen">
+          {/* Mobile Logo Background */}
+
           {/* Title Section - Left Side */}
           <div className="relative min-h-screen flex justify-center items-center">
             <h2 className="text-5xl md:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse text-center">
@@ -1237,3 +1180,4 @@ function HomePage() {
       </footer>
     </div>
   )
+}
