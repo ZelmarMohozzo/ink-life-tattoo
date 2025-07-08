@@ -151,15 +151,11 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-12 h-12 bg-gradient-to-r from-purple-600 to-emerald-500 rounded-full flex items-center justify-center">
-                <Palette className="w-6 h-6 text-white" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 to-emerald-400 bg-clip-text text-transparent">
-                  INK LIFE
-                </h1>
-                <p className="text-xs text-gray-400">TATTOO ACADEMY</p>
-              </div>
+              <img 
+                src="/images/banner_inkedlife copy.png" 
+                alt="INK LIFE TATTOO ACADEMY" 
+                className="h-16 w-auto"
+              />
             </div>
 
             {/* Desktop Navigation */}
