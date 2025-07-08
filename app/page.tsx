@@ -1,11 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import HeroCarousel from "@/components/hero-carousel"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
-import HeroCarousel from "@/components/hero-carousel"
+import { Badge } from "@/components/ui/badge"
 import Gallery from "@/components/gallery"
 import { submitConsultation, submitContactForm } from "./actions/contact"
 
@@ -73,14 +72,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-gray-100 to-white text-black">
-        {/* Hero Carousel */}
-        <div className="pt-16">
-          <HeroCarousel />
-        </div>
-      </header>
-        {/* Navigation Bar */}
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
-
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4">
@@ -290,7 +281,7 @@ export default function HomePage() {
             </div>
           )}
         </div>
-        </nav>
+      </header>
 
       {/* Hero Section */}
       <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
