@@ -978,7 +978,7 @@ export default function HomePage() {
           <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-4xl mx-auto leading-relaxed">
             Conviértete en un tatuador profesional con <span className="text-amber-400 font-semibold">Nico Lemos</span>. 
             Más de <span className="text-emerald-400 font-semibold">12 años de experiencia</span> te esperan en nuestra academia.
-              onClick={() => setIsCalendarModalOpen(false)}
+          </p>
 
           {/* Features badges */}
           <div className="flex flex-wrap justify-center gap-4 mb-10">
@@ -994,11 +994,11 @@ export default function HomePage() {
           </div>
 
           {/* CTA Buttons */}
-              className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
-              aria-label="Cerrar formulario"
-            >
+          <div className="text-center">
+            <button
+              onClick={() => scrollToSection("cursos")}
               className="group bg-gradient-to-r from-purple-600 to-emerald-500 hover:from-purple-700 hover:to-emerald-600 text-white px-10 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-2xl border border-white/20"
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            >
               <span className="flex items-center space-x-2">
                 <span>Ver Cursos</span>
                 <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1006,7 +1006,59 @@ export default function HomePage() {
                 </svg>
               </span>
             </button>
+          </div>
+        </div>
+      </section>
 
+      {/* Services Section */}
+      <section id="servicios" className="relative py-8 md:py-24 px-4 bg-gradient-to-br from-gray-900 via-black to-purple-900 text-white">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="text-xl md:text-4xl font-bold mb-4 text-center text-white font-serif tracking-wide">
+            NUESTROS SERVICIOS
+          </h2>
+          <div className="w-32 h-px bg-white mx-auto mb-6 md:mb-12"></div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Tatuajes */}
+            <div className="bg-black/60 backdrop-blur-sm rounded-lg p-8 border border-purple-400/20 hover:border-purple-400/50 transition-all duration-300">
+              <h3 className="text-2xl font-bold mb-4 text-purple-400">Tatuajes</h3>
+              <p className="text-gray-300 mb-4">
+                Diseños únicos y personalizados con más de 12 años de experiencia en diversos estilos.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• Realismo</li>
+                <li>• Black & Gray</li>
+                <li>• Blackwork</li>
+                <li>• Color</li>
+              </ul>
+            </div>
+
+            {/* Piercings */}
+            <div className="bg-black/60 backdrop-blur-sm rounded-lg p-8 border border-green-400/20 hover:border-green-400/50 transition-all duration-300">
+              <h3 className="text-2xl font-bold mb-4 text-green-400">Piercings</h3>
+              <p className="text-gray-300 mb-4">
+                Perforaciones profesionales con las mejores técnicas de higiene y seguridad.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• Oreja</li>
+                <li>• Nariz</li>
+                <li>• Labio</li>
+                <li>• Ombligo</li>
+              </ul>
+            </div>
+
+            {/* Borrado de Tatuaje */}
+            <div className="bg-black/60 backdrop-blur-sm rounded-lg p-8 border border-amber-400/20 hover:border-amber-400/50 transition-all duration-300">
+              <h3 className="text-2xl font-bold mb-4 text-amber-400">Borrado de Tatuaje</h3>
+              <p className="text-gray-300 mb-4">
+                Tecnología láser avanzada para la eliminación segura y efectiva de tatuajes.
+              </p>
+              <ul className="space-y-2 text-sm text-gray-400">
+                <li>• Láser Q-Switch</li>
+                <li>• Tratamiento personalizado</li>
+                <li>• Seguimiento profesional</li>
+                <li>• Resultados garantizados</li>
+              </ul>
             {/* Contenido del modal */}
             <div className="text-center mb-6">
               <Calendar className="w-12 h-12 text-purple-400 mx-auto mb-4" />
@@ -1177,16 +1229,121 @@ export default function HomePage() {
                 >
                   {isSubmitting ? "Enviando..." : "Enviar Solicitud"}
                 </Button>
+              </div>
             </form>
           </div>
         </div>
       )}
+
+      {/* Hero Section */}
+      <section id="inicio" className="relative min-h-screen flex items-center justify-center -mt-20">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed bg-[url('/images/mobile-hero-bg.png')] md:bg-[url('/images/hero-background-new.jpg')]"
+          style={{
+            top: "-80px",
+            height: "calc(100% + 80px)",
+          }}
+        >
+          <div className="absolute inset-0">
+            <div
+              className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+              style={{
+                backgroundImage: "url('/images/ink-life-logo-gold.png')",
+                backgroundSize: "contain",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+              }}
+            ></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/80 to-black/80 md:bg-gradient-to-br md:from-purple-900/50 md:via-black/70 md:to-green-900/50"></div>
+
+            {/* Texto vertical en la parte derecha */}
+            <div className="absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-between h-96 md:h-[500px] z-20">
+              <div className="transform -rotate-90 origin-center">
+                <a
+                  href="https://www.instagram.com/ink.life_tattoo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-purple-400 transition-colors cursor-pointer font-mbf-royal"
+                >
+                  INSTAGRAM
+                </a>
+              </div>
+              <div className="transform -rotate-90 origin-center">
+                <a
+                  href="https://api.whatsapp.com/send/?phone=59892153567&text&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-green-400 transition-colors cursor-pointer font-mbf-royal"
+                >
+                  WHATSAPP
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Hero Content */}
+        <div className="relative z-10 px-4 max-w-7xl mx-auto h-screen">
+          {/* Mobile Logo Background */}
+
+          {/* Title Section - Left Side */}
+          {/* Logo/Brand Section */}
+          <div className="mb-8">
+            <div className="inline-block p-6 border-2 border-amber-400/50 rounded-lg bg-black/30 backdrop-blur-sm">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-mbf-royal leading-tight">
+                <span className="block text-amber-400 drop-shadow-2xl">INK LIFE</span>
+                <span className="block text-2xl md:text-3xl lg:text-4xl text-emerald-300 font-light tracking-widest mt-2">
+                  TATTOO ACADEMY
+                </span>
+              </h1>
+              <div className="flex items-center justify-center mt-4 space-x-4">
+                <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent flex-1"></div>
+                <div className="w-3 h-3 bg-amber-400 rotate-45"></div>
+                <div className="h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent flex-1"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Subtitle */}
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-6 text-white">
+            <span className="bg-gradient-to-r from-purple-300 via-white to-emerald-300 bg-clip-text text-transparent">
+              ACADEMIA DE TATUAJES PROFESIONAL
+            </span>
+          </h2>
+
+          {/* Buttons Section - Bottom Center */}
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="flex justify-center flex-col sm:flex-row gap-4">
+              <Button
+                onClick={() => scrollToSection("cursos")}
+                size="lg"
+                className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+              >
+                VER CURSOS
+              </Button>
+              <Button
+                onClick={() => scrollToSection("contacto")}
+                size="lg"
+                className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
+              >
+                CONTACTAR AHORA
+              </Button>
+            </div>
+          </div>
+
+          {/* Desktop Logo - Far Right Side */}
+          <div className="absolute -right-8 lg:-right-16 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block"></div>
+        </div>
 
           {/* Scroll indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
             <div className="w-6 h-10 border-2 border-amber-400/50 rounded-full flex justify-center">
               <div className="w-1 h-3 bg-amber-400 rounded-full mt-2 animate-pulse"></div>
             </div>
+          </div>
+      </section>
+      </section>
           </div>
         </div>
 
