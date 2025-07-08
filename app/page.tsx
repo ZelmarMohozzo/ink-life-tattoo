@@ -148,18 +148,21 @@ export default function HomePage() {
       {/* Header */}
       <header className="bg-black/50 backdrop-blur-sm sticky top-0 z-50 border-b border-purple-500/20">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-between relative">
+            {/* Spacer for mobile menu button */}
+            <div className="md:hidden w-10"></div>
+            
+            {/* Logo - Centered */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center">
               <img 
-                src="/images/banner_inkedlife copy.png" 
+                src="/images/banner_inkedlife.png" 
                 alt="INK LIFE TATTOO ACADEMY" 
-                className="h-16 w-auto"
+                className="h-12 md:h-16 w-auto"
               />
             </div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-8">
+            <nav className="hidden lg:flex items-center space-x-8">
               <a href="#inicio" className="text-gray-300 hover:text-purple-400 transition-colors">Inicio</a>
               <a href="#cursos" className="text-gray-300 hover:text-purple-400 transition-colors">Cursos</a>
               <a href="#galeria" className="text-gray-300 hover:text-purple-400 transition-colors">Galería</a>
@@ -168,7 +171,7 @@ export default function HomePage() {
             </nav>
 
             {/* Contact Info */}
-            <div className="hidden lg:flex items-center space-x-4">
+            <div className="hidden xl:flex items-center space-x-4">
               <div className="flex items-center space-x-2 text-sm">
                 <Phone className="w-4 h-4 text-emerald-400" />
                 <span className="text-gray-300">+598 92 153 567</span>
@@ -183,7 +186,7 @@ export default function HomePage() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden text-white"
+              className="lg:hidden text-white z-10"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -192,7 +195,7 @@ export default function HomePage() {
 
           {/* Mobile Menu */}
           {isMenuOpen && (
-            <div className="md:hidden mt-4 pb-4 border-t border-gray-700">
+            <div className="lg:hidden mt-4 pb-4 border-t border-gray-700">
               <nav className="flex flex-col space-y-4 mt-4">
                 <a href="#inicio" className="text-gray-300 hover:text-purple-400 transition-colors" onClick={() => setIsMenuOpen(false)}>Inicio</a>
                 <a href="#cursos" className="text-gray-300 hover:text-purple-400 transition-colors" onClick={() => setIsMenuOpen(false)}>Cursos</a>
