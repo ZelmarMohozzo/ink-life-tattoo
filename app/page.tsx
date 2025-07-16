@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Palette, Clock, Calendar, CheckCircle } from "lucide-react"
@@ -57,6 +57,17 @@ export default function HomePage() {
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState("")
+  const [currentSlide, setCurrentSlide] = useState(0)
+  const [isPricingModalOpen, setIsPricingModalOpen] = useState(false)
+
+  // Auto-slide functionality
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev === 2 ? 0 : prev + 1))
+    }, 5000) // Change slide every 5 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -105,11 +116,11 @@ export default function HomePage() {
             </div>
 
             {/* <div className="flex items-center space-x-3">
-              <div className="text-center">
-               <a href="#inicio"><h1 className="text-5xl font-extrabold  text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] tracking-wider text-shadow-green ">INK LIFE </h1></a>
-                <a href="#inicio"><p className="text-xs text-purple-600 tracking-widest">TATTOO ACADEMY</p></a>
-              </div>
-            </div> */}
+            <div className="text-center">
+             <a href="#inicio"><h1 className="text-5xl font-extrabold  text-green-400 drop-shadow-[0_0_6px_rgba(34,197,94,0.7)] tracking-wider text-shadow-green ">INK LIFE </h1></a>
+              <a href="#inicio"><p className="text-xs text-purple-600 tracking-widest">TATTOO ACADEMY</p></a>
+            </div>
+          </div> */}
 
             {/* Right Navigation */}
             <div className="hidden md:flex space-x-8 items-center">
@@ -305,27 +316,280 @@ export default function HomePage() {
             ></div>
             <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-gray-900/80 to-black/80 md:bg-gradient-to-br md:from-purple-900/50 md:via-black/70 md:to-green-900/50"></div>
 
-            {/* Texto vertical en la parte derecha */}
-            <div className="absolute right-1 md:right-2 top-1/2 transform -translate-y-1/2 flex flex-col items-center justify-between h-96 md:h-[500px] z-20">
-              <div className="transform -rotate-90 origin-center">
-                <a
-                  href="https://www.instagram.com/ink.life_tattoo/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-purple-400 transition-colors cursor-pointer font-mbf-royal"
+            {/* Carousel Slider */}
+            <div className="absolute inset-0 z-10">
+              <div className="relative h-full">
+                {/* Carousel Container */}
+                <div className="carousel-container h-full overflow-hidden">
+                  <div
+                    className="carousel-slides flex h-full transition-all duration-1000 ease-in-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
+                    {/* Slide 1 - Academia de Tatuajes */}
+                    <div className="carousel-slide min-w-full h-full relative">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{
+                          backgroundImage: "url('/images/tattoo-process-bg.jpg')",
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent"></div>
+                      </div>
+                      <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 items-center px-4 gap-8">
+                        {/* Image Column */}
+                        <div className="hidden md:flex items-center justify-center h-full">
+                          <div className="relative group">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-green-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+                            <Card className="relative md:w-full md:max-w-md h-[500px] overflow-hidden rounded-lg shadow-2xl border-2 border-white/30 bg-black/80 backdrop-blur-sm transform transition-all duration-500 group-hover:scale-105">
+                              <img
+                                src="/images/student-tattooing-practice.jpeg"
+                                alt="Student Tattooing Practice"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </Card>
+                          </div>
+                        </div>
+                        {/* Content Column */}
+                        <div className="text-center md:text-left text-white space-y-6">
+                          <div className="space-y-4">
+                            <div className="inline-block">
+                              <span className="bg-gradient-to-r from-purple-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold tracking-wide">
+                                {"FORMACIÓN PROFESIONAL CON NICO LIEMOS\n"} 
+                              </span>
+                            </div>
+                            <h2 className="text-4xl md:text-6xl font-bold font-mbf-royal bg-gradient-to-r from-white via-purple-200 to-green-200 bg-clip-text text-transparent leading-tight">
+                              ACADEMIA DE TATUAJES
+                            </h2>
+                            <p className="text-xl md:text-2xl text-gray-300">¿Quieres aprender a tatuar?</p>
+                          </div>
+                          <div className="bg-black/40 backdrop-blur-sm p-6 rounded-xl border border-white/20">
+                            <p className="text-2xl md:text-3xl font-bold text-transparent bg-gradient-to-r from-green-400 via-purple-400 to-yellow-400 bg-clip-text drop-shadow-lg mb-2 font-mbf-royal tracking-wide">
+                              ¡Descubre tu potencial en Ink Life
+                            </p>
+                            <p className="text-xl md:text-2xl font-bold text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-green-400 bg-clip-text drop-shadow-lg font-mbf-royal tracking-wide">
+                              y comienza tu viaje hacia el Éxito!
+                            </p>
+                          </div>
+                          <Button
+                            onClick={() => scrollToSection("cursos")}
+                            className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold px-8 py-4 text-lg rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-green-500/50"
+                          >
+                            VER CURSOS
+                            <svg className="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M13 7l5 5m0 0l-5 5m5-5H6"
+                              />
+                            </svg>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Slide 2 - Remoción de Tatuajes */}
+                    <div className="carousel-slide min-w-full h-full relative">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{
+                          backgroundImage: "url('/images/tattoo-background.webp')",
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-purple-900/60 to-transparent"></div>
+                      </div>
+                      <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 items-center px-4 gap-8">
+                        {/* Content Column */}
+                        <div className="text-center md:text-left text-white space-y-6 order-2 md:order-1">
+                          <div className="space-y-4">
+                            <div className="inline-block">
+                              <span className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold tracking-wide">
+                                TECNOLOGÍA LÁSER
+                              </span>
+                            </div>
+                            <h2 className="text-4xl md:text-5xl font-bold font-mbf-royal bg-gradient-to-r from-white via-purple-200 to-pink-200 bg-clip-text text-transparent leading-tight">
+                              REMOCIÓN DE TATUAJES CON LÁSER
+                            </h2>
+                            <p className="text-xl md:text-2xl text-gray-300">¿Te arrepientes de ese tatuaje?</p>
+                            <p className="text-lg md:text-xl text-purple-300">Elimínalo ya en INK LIFE</p>
+                          </div>
+                          <Button
+                            onClick={() => setIsPricingModalOpen(true)}
+                            className="bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold px-8 py-4 text-lg rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-purple-500/50"
+                          >
+                            VER PRECIOS
+                            <svg className="w-5 h-5 ml-2 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Button>
+                        </div>
+                        {/* Image Column */}
+                        <div className="hidden md:flex items-center justify-center h-full order-1 md:order-2">
+                          <div className="relative group">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-pink-600 to-purple-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                            <Card className="relative md:w-full md:max-w-md h-[500px] overflow-hidden rounded-lg shadow-2xl border-2 border-white/30 bg-black/80 backdrop-blur-sm transform transition-all duration-500 group-hover:scale-105">
+                              <img
+                                src="/images/laser-tattoo-removal-rose.png"
+                                alt="Laser Tattoo Removal on Rose Tattoo"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-purple-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </Card>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Slide 3 - Hacerse un Tatuaje */}
+                    <div className="carousel-slide min-w-full h-full relative">
+                      <div
+                        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                        style={{
+                          backgroundImage: "url('/images/ink-life-studio.png')",
+                        }}
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/60 to-black/80"></div>
+                      </div>
+                      <div className="relative z-10 h-full grid grid-cols-1 md:grid-cols-2 items-center px-4 gap-8">
+                        {/* Image Column */}
+                        <div className="hidden md:flex items-center justify-center h-full">
+                          <div className="relative group">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                            <Card className="relative md:w-full md:max-w-md h-[500px] overflow-hidden rounded-lg shadow-2xl border-2 border-white/30 bg-black/80 backdrop-blur-sm transform transition-all duration-500 group-hover:scale-105">
+                              <img
+                                src="/images/tattoo-artist-working-2.png"
+                                alt="Tattoo Artist Working on Client"
+                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            </Card>
+                          </div>
+                        </div>
+                        {/* Content Column */}
+                        <div className="text-center md:text-left text-white space-y-6">
+                          <div className="space-y-4">
+                            <div className="inline-block">
+                              <span className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold tracking-wide">
+                                ARTE CORPORAL
+                              </span>
+                            </div>
+                            <h2 className="text-4xl md:text-5xl font-bold font-mbf-royal bg-gradient-to-r from-white via-blue-200 to-green-200 bg-clip-text text-transparent leading-tight">
+                              ¿DESEAS HACERTE UN TATUAJE?
+                            </h2>
+                          </div>
+                          <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                            <Button
+                              onClick={() => scrollToSection("instructor")}
+                              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-bold px-8 py-4 text-lg rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-blue-500/50"
+                            >
+                              VER MÁS
+                              <svg
+                                className="w-5 h-5 ml-2 inline"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                                />
+                              </svg>
+                            </Button>
+                            <Button
+                              onClick={() => scrollToSection("galeria")}
+                              className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold px-8 py-4 text-lg rounded-full shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-green-500/50"
+                            >
+                              NUESTROS TRABAJOS
+                              <svg
+                                className="w-5 h-5 ml-2 inline"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  strokeWidth={2}
+                                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                />
+                              </svg>
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Enhanced Carousel Navigation */}
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+                  <div className="flex items-center space-x-4 bg-black/40 backdrop-blur-md rounded-full px-6 py-3 border border-white/20">
+                    {[0, 1, 2].map((index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className={`relative w-3 h-3 rounded-full transition-all duration-300 ${
+                          currentSlide === index
+                            ? "bg-white scale-125 shadow-lg shadow-white/50"
+                            : "bg-white/50 hover:bg-white/75 hover:scale-110"
+                        }`}
+                      >
+                        {currentSlide === index && (
+                          <div className="absolute inset-0 rounded-full bg-white animate-ping opacity-75"></div>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Enhanced Carousel Arrows */}
+                <button
+                  onClick={() => setCurrentSlide(currentSlide === 0 ? 2 : currentSlide - 1)}
+                  className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20 group"
                 >
-                  INSTAGRAM
-                </a>
-              </div>
-              <div className="transform -rotate-90 origin-center">
-                <a
-                  href="https://api.whatsapp.com/send/?phone=59892153567&text&type=phone_number&app_absent=0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white/80 text-lg md:text-xl font-medium tracking-[0.4em] hover:text-green-400 transition-colors cursor-pointer font-mbf-royal"
+                  <div className="bg-black/40 backdrop-blur-md rounded-full p-4 border border-white/20 transition-all duration-300 group-hover:bg-black/60 group-hover:scale-110 group-hover:border-white/40">
+                    <svg
+                      className="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </div>
+                </button>
+                <button
+                  onClick={() => setCurrentSlide(currentSlide === 2 ? 0 : currentSlide + 1)}
+                  className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20 group"
                 >
-                  WHATSAPP
-                </a>
+                  <div className="bg-black/40 backdrop-blur-md rounded-full p-4 border border-white/20 transition-all duration-300 group-hover:bg-black/60 group-hover:scale-110 group-hover:border-white/40">
+                    <svg
+                      className="w-6 h-6 text-white transition-transform duration-300 group-hover:scale-110"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </div>
+                </button>
+
+                {/* Progress Bar */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/20 z-20">
+                  <div
+                    className="h-full bg-gradient-to-r from-purple-500 via-pink-500 to-green-500 transition-all duration-1000 ease-in-out"
+                    style={{ width: `${((currentSlide + 1) / 3) * 100}%` }}
+                  ></div>
+                </div>
               </div>
             </div>
           </div>
@@ -336,31 +600,9 @@ export default function HomePage() {
           {/* Mobile Logo Background */}
 
           {/* Title Section - Left Side */}
-          <div className="relative min-h-screen flex justify-center items-center">
-            <h2 className="text-5xl md:text-6xl font-bold tracking-widest font-mbf-royal text-[#3EB489] bg-gradient-to-r from-white via-green-400 to-purple-300 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(62,180,137,0.9)] animate-pulse text-center">
-              ACADEMIA DE TATUAJES
-            </h2>
-          </div>
 
           {/* Buttons Section - Bottom Center */}
-          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
-            <div className="flex justify-center flex-col sm:flex-row gap-4">
-              <Button
-                onClick={() => scrollToSection("cursos")}
-                size="lg"
-                className="bg-black/40 text-green-400 font-bold px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg shadow-lg border-2 border-green-400 tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-              >
-                VER CURSOS
-              </Button>
-              <Button
-                onClick={() => scrollToSection("contacto")}
-                size="lg"
-                className="bg-black/40 border-2 border-purple-500 text-purple-300 px-4 md:px-8 py-2 md:py-4 text-sm md:text-lg tracking-wide hover:bg-purple-300/30 transition-colors duration-300"
-              >
-                CONTACTAR AHORA
-              </Button>
-            </div>
-          </div>
+          <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20"></div>
 
           {/* Desktop Logo - Far Right Side */}
           <div className="absolute -right-8 lg:-right-16 xl:-right-24 top-1/2 transform -translate-y-1/2 z-10 hidden md:block"></div>
@@ -375,7 +617,7 @@ export default function HomePage() {
         <div className="container mx-auto max-w-7xl">
           <h1
             className="text-4xl md:text-4xl lg:text-6xl font-bold mb-8 text-center font-serif tracking-widest 
-               text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.85)]"
+             text-white drop-shadow-[0_0_15px_rgba(0,0,0,0.85)]"
             style={{ fontFamily: '"Times New Roman", Times, serif' }}
           >
             GALERÍA DE TRABAJOS
@@ -586,6 +828,17 @@ export default function HomePage() {
             NUESTROS CURSOS
           </h2>
           <div className="w-32 h-px bg-white mx-auto mb-6 md:mb-12"></div>
+
+          <p className="text-gray-400 mb-8 max-w-3xl mx-auto text-center">
+            <span className="block mb-4">
+              Todos nuestros cursos son <strong className="text-white">exclusivamente presenciales</strong> con un
+              máximo de <strong className="text-white">2 alumnos por clase</strong> para garantizar una atención
+              personalizada y de calidad.
+            </span>
+            <span className="block">
+              Incluyen materiales, certificado de finalización y seguimiento personalizado por parte del instructor.
+            </span>
+          </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-8 mb-8 md:mb-0">
             {/* Curso Completo */}
@@ -862,10 +1115,7 @@ export default function HomePage() {
           <div className="mt-16 md:mt-16 text-center relative z-10">
             <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               Todos nuestros cursos incluyen materiales, certificado de finalización y seguimiento personalizado por
-              Aprende el arte del tatuaje con técnicas profesionales y equipamiento de primera calidad. 
-              <span className="block mt-2 text-amber-400 font-semibold">
-                Cursos exclusivamente presenciales • Máximo 2 alumnos por clase
-              </span>
+              parte del instructor.
             </p>
             <Button className="bg-white text-black hover:bg-green-400 hover:text-black font-bold px-6 md:px-8 py-3 md:py-4 text-base md:text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-green-400/20 border-2 border-transparent hover:border-green-400">
               SOLICITAR INFORMACIÓN
@@ -1157,6 +1407,77 @@ export default function HomePage() {
                 </Button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Modal de Precios de Remoción */}
+      {isPricingModalOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={() => setIsPricingModalOpen(false)}
+        >
+          <div
+            className="relative bg-gradient-to-br from-gray-900 via-purple-900 to-black p-8 rounded-lg shadow-2xl max-w-md w-full mx-4 border border-purple-500/30"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Botón de cerrar */}
+            <button
+              onClick={() => setIsPricingModalOpen(false)}
+              className="absolute top-4 right-4 text-white hover:text-purple-400 transition-colors"
+              aria-label="Cerrar precios"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Contenido del modal */}
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">Precios de Remoción</h3>
+              <p className="text-gray-300 text-sm">Remoción de tatuajes con láser</p>
+            </div>
+
+            <div className="space-y-4 mb-6">
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                <h4 className="text-white font-semibold mb-2">Tatuajes Pequeños</h4>
+                <p className="text-purple-400 text-lg font-bold">Desde $2000 la sesión</p>
+              </div>
+
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                <h4 className="text-white font-semibold mb-2">Tatuajes Medianos</h4>
+                <p className="text-purple-400 text-lg font-bold">Desde $3500 la sesión</p>
+              </div>
+
+              <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+                <h4 className="text-white font-semibold mb-2">Tatuajes Grandes</h4>
+                <p className="text-purple-400 text-lg font-bold">Desde $5000 la sesión</p>
+              </div>
+            </div>
+
+            <div className="bg-yellow-900/30 border border-yellow-500/50 p-3 rounded-md mb-6">
+              <p className="text-yellow-300 text-sm text-center">
+                <strong>Importante:</strong> Precios estimativos de referencia
+              </p>
+            </div>
+
+            <div className="flex space-x-3">
+              <Button
+                onClick={() => scrollToSection("contacto")}
+                className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              >
+                Solicitar Presupuesto
+              </Button>
+              <Button
+                onClick={() => {
+                  setIsPricingModalOpen(false)
+                  scrollToSection("instructor")
+                }}
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors"
+              >
+                Ver Más Información
+              </Button>
+            </div>
           </div>
         </div>
       )}
