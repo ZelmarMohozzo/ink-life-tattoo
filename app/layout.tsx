@@ -1,11 +1,16 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Inter } from "next/font/google"
 import "./globals.css"
+import { CartProvider } from "@/lib/cart-context"
+import CartSidebar from "@/components/cart-sidebar"
+
+const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "INK LIFE TATTOO ACADEMY - Academia de Tatuajes en Punta del Este",
+  title: "INK LIFE TATTOO - Academia y Estudio",
   description:
-    "Aprende el arte del tatuaje con Nico Lemos, tatuador profesional con más de 12 años de experiencia. Cursos de tatuaje en Punta del Este, Uruguay. Especializado en blackwork, realismo y color.",
+    "Academia de tatuajes profesional con Nico Lemos. Cursos presenciales, tatuajes personalizados y remoción láser.",
   keywords:
     "tatuajes, academia de tatuajes, curso de tatuaje, Punta del Este, Uruguay, Nico Lemos, blackwork, realismo, tattoo academy",
   authors: [{ name: "INK LIFE TATTOO ACADEMY" }],
@@ -56,7 +61,7 @@ export const metadata: Metadata = {
   verification: {
     google: "your-google-verification-code",
   },
-    generator: 'v0.dev'
+  generator: "v0.dev",
 }
 
 export default function RootLayout({
@@ -143,8 +148,11 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased">
-        <div id="root">{children}</div>
+      <body className={inter.className}>
+        <CartProvider>
+          {children}
+          <CartSidebar />
+        </CartProvider>
 
         {/* Analytics Scripts */}
         {process.env.NODE_ENV === "production" && (
