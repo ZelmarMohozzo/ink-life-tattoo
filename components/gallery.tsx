@@ -1,164 +1,255 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GalleryModal from "./gallery-modal"
+import { Trash2 } from "lucide-react"
 
-interface GalleryProps {
-  images: {
-    src: string
-    alt: string
-  }[]
+// Definir las categorías de tatuajes
+const categories = [
+  { id: "all", label: "Todos" },
+  { id: "blackwork", label: "Blackwork", color: "bg-gray-800" },
+  { id: "realismo", label: "Realismo", color: "bg-amber-700" },
+  { id: "neotradicional", label: "Neotradicional", color: "bg-red-700" },
+  { id: "minimalista", label: "Minimalista", color: "bg-zinc-600" },
+  { id: "acuarela", label: "Acuarela", color: "bg-blue-600" },
+]
+
+// Función para asignar categorías aleatorias a las imágenes
+const assignRandomCategory = (index: number) => {
+  if (index % 5 === 0) return "blackwork"
+  if (index % 7 === 0) return "realismo"
+  if (index % 3 === 0) return "neotradicional"
+  if (index % 4 === 0) return "minimalista"
+  if (index % 6 === 0) return "acuarela"
+
+  const categoryIds = categories.slice(1).map((cat) => cat.id)
+  return categoryIds[Math.floor(Math.random() * categoryIds.length)]
 }
 
-export default function Gallery({ images }: GalleryProps) {
+// Función para determinar el tamaño de la imagen en el collage
+const getItemSize = (index: number) => {
+  if (index % 7 === 0) return "gallery-item-large"
+  if (index % 5 === 0) return "gallery-item-wide"
+  if (index % 3 === 0) return "gallery-item-tall"
+  return ""
+}
+
+// Función para obtener el color de la categoría
+const getCategoryColor = (categoryId: string) => {
+  const category = categories.find((cat) => cat.id === categoryId)
+  return category?.color || "bg-gray-800"
+}
+
+export default function Gallery() {
+  const [selectedCategory, setSelectedCategory] = useState("all")
   const [modalOpen, setModalOpen] = useState(false)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [filter, setFilter] = useState("todos")
+  const [selectedImage, setSelectedImage] = useState<number | null>(null)
+  const [loadedImages, setLoadedImages] = useState<Record<number, boolean>>({})
+  const [imagesWithCategories, setImagesWithCategories] = useState<Array<{ src: string; category: string }>>([])
+  const [visibleImages, setVisibleImages] = useState<Set<number>>(new Set())
+  const galleryRef = useRef<HTMLDivElement>(null)
+  const observerRef = useRef<IntersectionObserver | null>(null)
 
-  const categories = [
-    { id: "todos", name: "Todos", count: 38 },
-    { id: "realismo", name: "Realismo", count: 21 },
-    { id: "mandala", name: "Mandala", count: 6 },
-    { id: "blackwork", name: "Blackwork", count: 11 },
-    { id: "color", name: "Color", count: 1 },
-  ]
+  // Generar las imágenes con categorías al inicio
+  useEffect(() => {
+    const images = Array.from({ length: 38 }, (_, i) => ({
+      src: `/images/tattoo${i + 1}.jpeg`,
+      category: assignRandomCategory(i),
+    }))
+    setImagesWithCategories(images)
+  }, [])
 
-  const getFilteredImages = () => {
-    if (filter === "todos") return images
+  // Configurar Intersection Observer para animaciones
+  useEffect(() => {
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number.parseInt(entry.target.getAttribute("data-index") || "0")
+            setVisibleImages((prev) => new Set([...prev, index]))
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px",
+      },
+    )
 
-    const filterMap: { [key: string]: number[] } = {
-      realismo: [2, 3, 9, 10, 12, 14, 16, 17, 18, 19, 22, 23, 24, 26, 27, 29, 34, 35, 36, 37], // Índices de imágenes realistas
-      mandala: [8, 11, 15, 30, 33], // Índices de mandalas
-      blackwork: [0, 1, 4, 5, 6, 7, 13, 20, 21, 25, 31, 33], // Índices de blackwork
-      color: [32],
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
     }
+  }, [])
 
-    return images.filter((_, index) => filterMap[filter]?.includes(index))
-  }
+  // Observar elementos cuando cambia la categoría
+  useEffect(() => {
+    if (observerRef.current) {
+      // Limpiar observaciones anteriores
+      observerRef.current.disconnect()
+      setVisibleImages(new Set())
 
-  const filteredImages = getFilteredImages()
+      // Observar nuevos elementos después de un pequeño delay
+      setTimeout(() => {
+        const elements = document.querySelectorAll(".gallery-item")
+        elements.forEach((el) => {
+          if (observerRef.current) {
+            observerRef.current.observe(el)
+          }
+        })
+      }, 100)
+    }
+  }, [selectedCategory])
 
-  const openModal = (imageSrc: string) => {
-    const imageIndex = images.findIndex((img) => img.src === imageSrc)
-    setCurrentImageIndex(imageIndex)
+  // Manejar la apertura del modal
+  const handleImageClick = (index: number) => {
+    setSelectedImage(index)
     setModalOpen(true)
   }
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length)
+  // Manejar la carga de imágenes
+  const handleImageLoad = (index: number) => {
+    setLoadedImages((prev) => ({ ...prev, [index]: true }))
   }
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
+  // Filtrar imágenes por categoría
+  const filteredImages = imagesWithCategories.filter(
+    (img) => selectedCategory === "all" || img.category === selectedCategory,
+  )
+
+  // Función para eliminar todo
+  const deleteEverything = () => {
+    if (confirm("¿Estás seguro de que quieres eliminar todo? Esta acción no se puede deshacer.")) {
+      setImagesWithCategories([])
+      setVisibleImages(new Set())
+      setLoadedImages({})
+      alert("¡Todo eliminado!")
+    }
   }
+
+  // Estadísticas de la galería
+  const stats = [
+    { label: "Total de Tatuajes", value: imagesWithCategories.length },
+    { label: "Blackwork", value: imagesWithCategories.filter((img) => img.category === "blackwork").length },
+    { label: "Realismo", value: imagesWithCategories.filter((img) => img.category === "realismo").length },
+    { label: "Neotradicional", value: imagesWithCategories.filter((img) => img.category === "neotradicional").length },
+  ]
 
   return (
-    <div>
-      {/* Filtros */}
-      <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-8 md:mb-12 font-mbf-royal">
-        {categories.map((category) => (
-          <button
-            key={category.id}
-            onClick={() => setFilter(category.id)}
-            className={`px-4 md:px-6 py-2 md:py-3 rounded-full text-sm md:text-base font-medium transition-all duration-300 ${
-              filter === category.id
-                ? "bg-indigo-700 text-emerald-300 shadow-lg transform scale-105"
-                : "bg-black/50 text-gray-300 hover:bg-indigo-700 hover:text-white border border-gray-600"
-            }`}
-          >
-            {category.name}
-            <span className="ml-2 text-xs opacity-75">({category.count})</span>
-          </button>
-        ))}
+    <div className="container mx-auto px-4 py-12" ref={galleryRef}>
+      <div className="text-center mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 font-mbf-royal">Galería de Tatuajes</h2>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+          Explora nuestra colección de trabajos realizados por nuestros artistas y estudiantes. Cada pieza refleja
+          nuestra pasión por el arte del tatuaje.
+        </p>
       </div>
-
-      {/* Grid de imágenes */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-6">
-        {filteredImages.map((image, index) => (
-          <div
-            key={`${filter}-${index}`}
-            className="group relative aspect-square overflow-hidden rounded-lg border border-white-400/20 cursor-pointer hover:border-white-400 transition-all duration-500 hover:shadow-xl hover:shadow-white-400/20 hover:-translate-y-2"
-            onClick={() => openModal(image.src)}
-          >
-            <img
-              src={image.src || "/placeholder.svg"}
-              alt={image.alt}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
-              <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                <div className="w-12 h-12 rounded-full bg-white-500/90 flex items-center justify-center backdrop-blur-sm">
-                  <svg className="w-6 h-6 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            {/* Etiqueta de categoría */}
-            <div className="absolute top-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="px-2 py-1 bg-black/70 text-purple-400 text-xs rounded-full backdrop-blur-sm">
-                {image.alt.includes("mandala") || image.alt.includes("geométrico")
-                  ? "Mandala"
-                  : image.alt.includes("realista") ||
-                      image.alt.includes("Jesucristo") ||
-                      image.alt.includes("águila") ||
-                      image.alt.includes("tigre")
-                    ? "Realismo"
-                    : image.alt.includes("dragón")
-                      ? "Color"
-                      : "Blackwork"}
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Mensaje si no hay resultados */}
-      {filteredImages.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-400 text-lg">No se encontraron trabajos en esta categoría.</p>
-        </div>
-      )}
 
       {/* Estadísticas */}
-      <div className="mt-12 md:mt-16 text-center">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl mx-auto">
-          <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">{images.length}+</div>
-            <div className="text-gray-300 text-sm md:text-base">Trabajos Realizados</div>
-          </div>
-          <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">12+</div>
-            <div className="text-gray-300 text-sm md:text-base">Años de Experiencia</div>
-          </div>
-          <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">150+</div>
-            <div className="text-gray-300 text-sm md:text-base">Clientes Satisfechos</div>
-          </div>
-          <div className="bg-gray-800/50 p-4 md:p-6 rounded-lg border border-gray-700">
-            <div className="text-2xl md:text-3xl font-bold text-purple-400 mb-2">5</div>
-            <div className="text-gray-300 text-sm md:text-base">Estilos Dominados</div>
-          </div>
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {stats.map((stat, index) => (
+          <Card key={index} className="overflow-hidden border-0 bg-gradient-to-br from-gray-900 to-gray-800">
+            <CardContent className="p-4 flex flex-col items-center justify-center h-full">
+              <p className="text-sm text-gray-400">{stat.label}</p>
+              <p className="text-3xl font-bold">{stat.value}</p>
+            </CardContent>
+          </Card>
+        ))}
       </div>
 
+      {/* Tabs de categorías */}
+      <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
+        <div className="flex justify-between items-center mb-4">
+          <TabsList className="bg-gray-800">
+            {categories.map((category) => (
+              <TabsTrigger key={category.id} value={category.id} className="data-[state=active]:bg-gray-700">
+                {category.label}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+
+          <Button
+            onClick={deleteEverything}
+            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white border-0 font-bold"
+          >
+            <Trash2 className="h-4 w-4" />
+            ¡Elimínalo ya!
+          </Button>
+        </div>
+
+        {/* Contenido de las tabs */}
+        {categories.map((category) => (
+          <TabsContent key={category.id} value={category.id} className="mt-0">
+            <div className="gallery-collage">
+              {filteredImages.map((image, index) => {
+                const originalIndex = imagesWithCategories.findIndex((img) => img.src === image.src)
+                const isLoaded = loadedImages[originalIndex]
+                const itemSizeClass = getItemSize(originalIndex)
+                const categoryColor = getCategoryColor(image.category)
+                const isVisible = visibleImages.has(originalIndex)
+
+                // Determinar dirección de animación basada en posición
+                const animationDirection = index % 2 === 0 ? "slide-in-left" : "slide-in-right"
+                const animationDelay = (index % 6) * 100 // Escalonar animaciones
+
+                return (
+                  <div
+                    key={originalIndex}
+                    data-index={originalIndex}
+                    className={`gallery-item ${itemSizeClass} ${isLoaded ? "" : "skeleton"} ${
+                      isVisible ? animationDirection : "gallery-item-hidden"
+                    }`}
+                    style={{
+                      animationDelay: `${animationDelay}ms`,
+                    }}
+                    onClick={() => handleImageClick(originalIndex)}
+                  >
+                    <Image
+                      src={image.src || "/placeholder.svg"}
+                      alt={`Tatuaje ${originalIndex + 1}`}
+                      className={`gallery-image ${isLoaded ? "opacity-100" : "opacity-0"}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      style={{ objectFit: "cover" }}
+                      onLoad={() => handleImageLoad(originalIndex)}
+                      priority={index < 8}
+                    />
+
+                    <div className={`gallery-category-badge ${categoryColor}`}>
+                      {categories.find((cat) => cat.id === image.category)?.label}
+                    </div>
+
+                    <div className="gallery-overlay">
+                      <h3 className="text-lg font-semibold">Tatuaje #{originalIndex + 1}</h3>
+                      <p className="text-sm opacity-80">Haz clic para ver más detalles</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </TabsContent>
+        ))}
+      </Tabs>
+
+      {/* Modal para ver la imagen en grande */}
       <GalleryModal
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
-        currentImage={images[currentImageIndex]?.src}
-        currentAlt={images[currentImageIndex]?.alt}
-        onNext={nextImage}
-        onPrev={prevImage}
-        currentIndex={currentImageIndex}
-        totalImages={images.length}
+        currentImage={imagesWithCategories[selectedImage || 0]?.src}
+        currentAlt={`Tatuaje ${(selectedImage || 0) + 1}`}
+        onNext={() => setSelectedImage((prev) => (prev !== null ? (prev + 1) % imagesWithCategories.length : 0))}
+        onPrev={() =>
+          setSelectedImage((prev) =>
+            prev !== null ? (prev - 1 + imagesWithCategories.length) % imagesWithCategories.length : 0,
+          )
+        }
+        currentIndex={selectedImage || 0}
+        totalImages={imagesWithCategories.length}
       />
     </div>
   )
