@@ -44,7 +44,11 @@ const getCategoryColor = (categoryId: string) => {
   return category?.color || "bg-gray-800"
 }
 
-export default function Gallery() {
+interface GalleryProps {
+  images: { src: string; alt: string }[]
+}
+
+export default function Gallery({ images: initialImages }: GalleryProps) {
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
@@ -54,14 +58,20 @@ export default function Gallery() {
   const galleryRef = useRef<HTMLDivElement>(null)
   const observerRef = useRef<IntersectionObserver | null>(null)
 
-  // Generar las imágenes con categorías al inicio
+  // Estado para controlar cuántas imágenes se muestran
+  const initialDisplayCount = 24 // Número inicial de imágenes a mostrar (aumentado para miniaturas)
+  const loadMoreCount = 24 // Cuántas imágenes más cargar por clic
+  const [displayCount, setDisplayCount] = useState(initialDisplayCount)
+
+  // Generar las imágenes con categorías al inicio, usando las imágenes pasadas por prop
   useEffect(() => {
-    const images = Array.from({ length: 38 }, (_, i) => ({
-      src: `/images/tattoo${i + 1}.jpeg`,
+    const images = initialImages.map((img, i) => ({
+      src: img.src,
       category: assignRandomCategory(i),
     }))
     setImagesWithCategories(images)
-  }, [])
+    setDisplayCount(initialDisplayCount) // Reset display count when images change
+  }, [initialImages])
 
   // Configurar Intersection Observer para animaciones
   useEffect(() => {
@@ -87,7 +97,7 @@ export default function Gallery() {
     }
   }, [])
 
-  // Observar elementos cuando cambia la categoría
+  // Observar elementos cuando cambia la categoría o el número de imágenes mostradas
   useEffect(() => {
     if (observerRef.current) {
       // Limpiar observaciones anteriores
@@ -104,7 +114,7 @@ export default function Gallery() {
         })
       }, 100)
     }
-  }, [selectedCategory])
+  }, [selectedCategory, displayCount]) // Add displayCount as a dependency
 
   // Manejar la apertura del modal
   const handleImageClick = (index: number) => {
@@ -122,7 +132,15 @@ export default function Gallery() {
     (img) => selectedCategory === "all" || img.category === selectedCategory,
   )
 
-  // Función para eliminar todo
+  // Imágenes a mostrar (limitadas por displayCount)
+  const imagesToDisplay = filteredImages.slice(0, displayCount)
+
+  // Función para cargar más imágenes
+  const loadMoreImages = () => {
+    setDisplayCount((prevCount) => Math.min(prevCount + loadMoreCount, filteredImages.length))
+  }
+
+  // Función para eliminar todo (solo para demostración, no persistente)
   const deleteEverything = () => {
     if (confirm("¿Estás seguro de que quieres eliminar todo? Esta acción no se puede deshacer.")) {
       setImagesWithCategories([])
@@ -141,7 +159,7 @@ export default function Gallery() {
   ]
 
   return (
-    <div className="container mx-auto px-4 py-12" ref={galleryRef}>
+    <div className="py-12" ref={galleryRef}>
       <div className="text-center mb-10">
         <h2 className="text-3xl md:text-4xl font-bold mb-4 font-mbf-royal">Galería de Tatuajes</h2>
         <p className="text-lg text-gray-400 max-w-2xl mx-auto">
@@ -149,19 +167,8 @@ export default function Gallery() {
           nuestra pasión por el arte del tatuaje.
         </p>
       </div>
-
       {/* Estadísticas */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-        {stats.map((stat, index) => (
-          <Card key={index} className="overflow-hidden border-0 bg-gradient-to-br from-gray-900 to-gray-800">
-            <CardContent className="p-4 flex flex-col items-center justify-center h-full">
-              <p className="text-sm text-gray-400">{stat.label}</p>
-              <p className="text-3xl font-bold">{stat.value}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
+      
       {/* Tabs de categorías */}
       <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
         <div className="flex justify-between items-center mb-4">
@@ -186,7 +193,7 @@ export default function Gallery() {
         {categories.map((category) => (
           <TabsContent key={category.id} value={category.id} className="mt-0">
             <div className="gallery-collage">
-              {filteredImages.map((image, index) => {
+              {imagesToDisplay.map((image, index) => {
                 const originalIndex = imagesWithCategories.findIndex((img) => img.src === image.src)
                 const isLoaded = loadedImages[originalIndex]
                 const itemSizeClass = getItemSize(originalIndex)
@@ -232,10 +239,19 @@ export default function Gallery() {
                 )
               })}
             </div>
+            {filteredImages.length > displayCount && (
+              <div className="text-center mt-8">
+                <Button
+                  onClick={loadMoreImages}
+                  className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded-full"
+                >
+                  Ver más tatuajes
+                </Button>
+              </div>
+            )}
           </TabsContent>
         ))}
       </Tabs>
-
       {/* Modal para ver la imagen en grande */}
       <GalleryModal
         isOpen={modalOpen}
