@@ -1,16 +1,6 @@
 "use server"
 
-import { Resend } from "resend"
-import { z } from "zod"
 import nodemailer from "nodemailer"
-
-const resend = new Resend(process.env.RESEND_API_KEY)
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-})
 
 export async function submitConsultation(formData: FormData) {
   try {
@@ -118,37 +108,67 @@ export async function submitConsultation(formData: FormData) {
   }
 }
 
-export async function submitContactForm(prevState: any, formData: FormData) {
-  const validatedFields = contactFormSchema.safeParse({
-    name: formData.get("name"),
-    email: formData.get("email"),
-    message: formData.get("message"),
-  })
+export async function submitContactForm(formData: FormData) {
+  try {
+    const name = formData.get("name") as string
+    const email = formData.get("email") as string
+    const message = formData.get("message") as string
 
-  if (!validatedFields.success) {
+    if (!name || !email || !message) {
+      return {
+        success: false,
+        message: "Por favor completa todos los campos.",
+      }
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
+    })
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: "zelmarmohozzo@gmail.com",
+      subject: `Nuevo Mensaje de Contacto - INK LIFE TATTOO ACADEMY`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <div style="background: linear-gradient(135deg, #7c3aed, #10b981); padding: 20px; text-align: center;">
+            <h1 style="color: white; margin: 0;">INK LIFE TATTOO ACADEMY</h1>
+            <p style="color: white; margin: 5px 0;">Nuevo Mensaje de Contacto</p>
+          </div>
+          
+          <div style="padding: 30px; background: #f9fafb;">
+            <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+              <p><strong>Nombre:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Mensaje:</strong></p>
+              <div style="background: #f3f4f6; padding: 15px; border-radius: 6px; margin-top: 10px;">
+                <p style="line-height: 1.6; margin: 0;">${message}</p>
+              </div>
+            </div>
+            
+            <div style="background: #7c3aed; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;">
+              <p style="margin: 0; font-size: 14px;">Enviado desde inklifetattoo.com</p>
+            </div>
+          </div>
+        </div>
+      `,
+    }
+
+    await transporter.sendMail(mailOptions)
+
+    return {
+      success: true,
+      message: "¡Mensaje enviado exitosamente! Te responderemos pronto.",
+    }
+  } catch (error) {
+    console.error("Error enviando mensaje:", error)
     return {
       success: false,
-      message: "Validation failed",
-      errors: validatedFields.error.flatten().fieldErrors,
+      message: "Error al enviar el mensaje. Por favor intenta nuevamente.",
     }
-  }
-
-  const { name, email, message } = validatedFields.data
-
-  try {
-    await resend.emails.send({
-      from: process.env.EMAIL_FROM || "onboarding@resend.dev",
-      to: process.env.EMAIL_TO || "delivered@resend.dev", // Replace with your actual recipient email
-      subject: `New Contact Form Submission from ${name}`,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-    })
-    return { success: true, message: "Message sent successfully!" }
-  } catch (error) {
-    console.error("Error sending email:", error)
-    return { success: false, message: "Failed to send message." }
   }
 }

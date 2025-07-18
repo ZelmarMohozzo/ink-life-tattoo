@@ -168,7 +168,16 @@ export default function Gallery({ images: initialImages }: GalleryProps) {
         </p>
       </div>
       {/* Estadísticas */}
-      
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        {stats.map((stat, index) => (
+          <Card key={index} className="overflow-hidden border-0 bg-gradient-to-br from-gray-900 to-gray-800">
+            <CardContent className="p-4 flex flex-col items-center justify-center h-full">
+              <p className="text-sm text-gray-400">{stat.label}</p>
+              <p className="text-3xl font-bold">{stat.value}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
       {/* Tabs de categorías */}
       <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
         <div className="flex justify-between items-center mb-4">
