@@ -97,8 +97,8 @@ body {
 .gallery-collage {
   display: grid;
   /* For mobile, force very small columns and minimal gap */
-  grid-template-columns: repeat(auto-fit, minmax(15px, 1fr)); /* Extremely small base for mobile */
-  gap: 0.01rem; /* Almost no gap for mobile */
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr)); /* Extremely small base for mobile */
+  gap: 0; /* No gap for mobile */
   width: 100%; /* Ensure it takes full available width */
 }
 
@@ -113,7 +113,7 @@ body {
 .gallery-item {
   position: relative;
   overflow: hidden;
-  border-radius: 0.05rem; /* Even smaller border-radius for tiny items */
+  border-radius: 0; /* No border-radius for maximum compactness */
   cursor: pointer;
   transition: transform 0.3s ease, opacity 0.3s ease;
   aspect-ratio: 1 / 1; /* Default square aspect ratio */
@@ -198,7 +198,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 0.01rem; /* Extremely reduced padding */
+  padding: 0; /* No padding for maximum compactness */
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -209,11 +209,11 @@ body {
 
 .gallery-category-badge {
   position: absolute;
-  top: 0.01rem; /* Adjusted for tiny items */
-  left: 0.01rem; /* Adjusted for tiny items */
-  padding: 0.01rem 0.05rem; /* Extremely reduced padding */
-  border-radius: 9999px;
-  font-size: 0.25rem; /* Even smaller font size */
+  top: 0; /* No offset for maximum compactness */
+  left: 0; /* No offset for maximum compactness */
+  padding: 0; /* No padding for maximum compactness */
+  border-radius: 0; /* No border-radius for maximum compactness */
+  font-size: 0.2rem; /* Extremely small font size */
   font-weight: bold;
   color: white;
   z-index: 10;

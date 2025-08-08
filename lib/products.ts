@@ -1,120 +1,58 @@
-export interface Course {
-  id: string
-  name: string
-  duration: string
-  price: number
-  level: string
-  description: string
-  features: string[]
-  image: string
-}
-
-export interface ServiceSize {
-  id: string
-  name: string
-  dimensions: string
-  price: number
-  description?: string
-}
-
-export const courses: Course[] = [
+export const products = [
   {
-    id: "curso-inicial",
-    name: "Curso Inicial",
-    duration: "1 mes",
-    price: 800,
-    level: "Básico",
-    description: "Curso básico para iniciarse en el mundo del tatuaje",
-    features: ["Bioseguridad", "Estilos de tatuajes", "Máquinas", "Materiales", "Línea sólida", "Relleno sólido"],
-    image: "/images/course-basic.jpg",
+    id: "1",
+    name: "Máquina de Tatuar Profesional",
+    price: 250.0,
+    image: "/placeholder.png?height=200&width=200&text=Máquina+Tatuar",
+    description: "Máquina rotativa de alta calidad para líneas y sombreados precisos. Ideal para profesionales.",
   },
   {
-    id: "curso-completo",
-    name: "Curso Completo",
-    duration: "2 meses",
-    price: 1400,
-    level: "Intermedio",
-    description: "Curso intermedio con técnicas avanzadas",
-    features: [
-      "Bioseguridad",
-      "Estilos de tatuajes",
-      "Máquinas",
-      "Materiales",
-      "Línea sólida",
-      "Relleno sólido",
-      "Color sólido",
-      "Sombras",
-    ],
-    image: "/images/course-intermediate.jpg",
+    id: "2",
+    name: "Kit de Tintas Premium (12 colores)",
+    price: 120.0,
+    image: "/placeholder.png?height=200&width=200&text=Tintas+Premium",
+    description: "Set de 12 tintas vibrantes y duraderas, aptas para todo tipo de piel. Colores intensos.",
   },
   {
-    id: "curso-full",
-    name: "Curso Full",
-    duration: "3 meses",
-    price: 2200,
-    level: "Completo",
-    description: "Curso completo con posibilidad laboral en el estudio",
-    features: [
-      "Bioseguridad",
-      "Estilos de tatuajes",
-      "Máquinas",
-      "Materiales",
-      "Línea sólida",
-      "Relleno sólido",
-      "Color sólido",
-      "Sombras",
-      "Texturas",
-      "Técnica realismo color y sombra",
-      "Posibilidad laboral en el estudio",
-    ],
-    image: "/images/course-advanced.jpg",
-  },
-]
-
-export const tattooSizes: ServiceSize[] = [
-  {
-    id: "small",
-    name: "Pequeño",
-    dimensions: "hasta 5cm",
-    price: 75,
-    description: "Ideal para diseños simples y minimalistas",
+    id: "3",
+    name: "Agujas Desechables (Caja de 50)",
+    price: 45.0,
+    image: "/placeholder.png?height=200&width=200&text=Agujas+Desechables",
+    description: "Caja de 50 agujas estériles de acero inoxidable, varios tamaños disponibles.",
   },
   {
-    id: "medium",
-    name: "Mediano",
-    dimensions: "5cm - 15cm",
-    price: 185,
-    description: "Perfecto para diseños con detalles moderados",
+    id: "4",
+    name: "Fuente de Poder Digital",
+    price: 90.0,
+    image: "/placeholder.png?height=200&width=200&text=Fuente+Poder",
+    description: "Fuente de poder compacta con pantalla digital, control de voltaje preciso.",
   },
   {
-    id: "large",
-    name: "Grande",
-    dimensions: "más de 15cm",
-    price: 350,
-    description: "Para diseños complejos y detallados",
-  },
-]
-
-export const removalSizes: ServiceSize[] = [
-  {
-    id: "small-removal",
-    name: "Pequeño",
-    dimensions: "hasta 5cm",
-    price: 115,
-    description: "1-3 sesiones aproximadamente",
+    id: "5",
+    name: "Piel Sintética para Práctica",
+    price: 15.0,
+    image: "/placeholder.png?height=200&width=200&text=Piel+Sintética",
+    description: "Piel sintética de alta densidad para practicar técnicas de tatuaje. Reutilizable.",
   },
   {
-    id: "medium-removal",
-    name: "Mediano",
-    dimensions: "5cm - 15cm",
-    price: 200,
-    description: "3-6 sesiones aproximadamente",
+    id: "6",
+    name: "Vaselina para Tatuajes (500g)",
+    price: 20.0,
+    image: "/placeholder.png?height=200&width=200&text=Vaselina+Tatuajes",
+    description: "Vaselina especial para tatuajes, hidrata y protege la piel durante el proceso.",
   },
   {
-    id: "large-removal",
-    name: "Grande",
-    dimensions: "más de 15cm",
-    price: 300,
-    description: "6-10 sesiones aproximadamente",
+    id: "7",
+    name: "Guantes de Nitrilo (Caja de 100)",
+    price: 25.0,
+    image: "/placeholder.png?height=200&width=200&text=Guantes+Nitrilo",
+    description: "Caja de 100 guantes de nitrilo, resistentes y cómodos para uso profesional.",
+  },
+  {
+    id: "8",
+    name: "Plantillas de Transferencia",
+    price: 10.0,
+    image: "/placeholder.png?height=200&width=200&text=Plantillas+Transferencia",
+    description: "Papel de transferencia para crear diseños precisos en la piel antes de tatuar.",
   },
 ]
