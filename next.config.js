@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
-    config.externals.push({
-      "node-fetch": "commonjs node-fetch",
-    })
-    return config
-  },
+  output: "standalone",
+  reactStrictMode: true,
+  swcMinify: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -13,6 +10,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
+    domains: ["por ahora ninguno"],
     unoptimized: true,
   },
 }

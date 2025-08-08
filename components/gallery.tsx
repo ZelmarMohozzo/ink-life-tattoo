@@ -179,14 +179,6 @@ export default function Gallery({ images: initialImages }: GalleryProps) {
               </TabsTrigger>
             ))}
           </TabsList>
-
-          <Button
-            onClick={deleteEverything}
-            className="flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white border-0 font-bold"
-          >
-            <Trash2 className="h-4 w-4" />
-            ¡Elimínalo ya!
-          </Button>
         </div>
 
         {/* Contenido de las tabs */}
