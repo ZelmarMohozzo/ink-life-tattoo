@@ -3,10 +3,8 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import GalleryModal from "./gallery-modal"
-import { Trash2 } from "lucide-react"
 
 // Definir las categorías de tatuajes
 const categories = [
@@ -59,8 +57,8 @@ export default function Gallery({ images: initialImages }: GalleryProps) {
   const observerRef = useRef<IntersectionObserver | null>(null)
 
   // Estado para controlar cuántas imágenes se muestran
-  const initialDisplayCount = 24 // Número inicial de imágenes a mostrar (aumentado para miniaturas)
-  const loadMoreCount = 24 // Cuántas imágenes más cargar por clic
+  const initialDisplayCount = 12 // Número inicial de imágenes a mostrar (aumentado para miniaturas)
+  const loadMoreCount = 12 // Cuántas imágenes más cargar por clic
   const [displayCount, setDisplayCount] = useState(initialDisplayCount)
 
   // Generar las imágenes con categorías al inicio, usando las imágenes pasadas por prop
@@ -168,7 +166,7 @@ export default function Gallery({ images: initialImages }: GalleryProps) {
         </p>
       </div>
       {/* Estadísticas */}
-      
+
       {/* Tabs de categorías */}
       <Tabs defaultValue="all" value={selectedCategory} onValueChange={setSelectedCategory} className="mb-8">
         <div className="flex justify-between items-center mb-4">
