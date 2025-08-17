@@ -83,6 +83,11 @@ export default function RootLayout({
         {/* Preload critical fonts */}
         <link rel="preload" href="/fonts/mbf-royal.ttf" as="font" type="font/ttf" crossOrigin="anonymous" />
 
+        {/* Google Fonts */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
+
         {/* Structured Data for SEO */}
         <script
           type="application/ld+json"

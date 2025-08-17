@@ -561,7 +561,7 @@ export default function HomePage() {
               className="text-xl md:text-4xl font-bold mb-4 text-white font-serif tracking-wide text-center"
               style={{ fontFamily: '"Times New Roman", Times, serif' }}
             >
-              CONOCE A TU INSTRUCTOR
+              CONOCE A TU INSTRUCTOR aaa
             </h2>
 
             <div className="w-32 h-px bg-white mx-auto mb-6 md:mb-12"></div>
